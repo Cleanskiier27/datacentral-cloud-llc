@@ -72,33 +72,39 @@ def main():
     
     # Handle commands
     if args.command == "generate":
-        token = manager.generate_token(
-            name=args.name,
-            scopes=args.scopes,
-            expiry_days=args.expiry_days
-        )
-        print(f"Generated token: {token}")
-        print("\nIMPORTANT: Save this token securely. It will not be shown again.")
-        return 0
+        try:
+            token = manager.generate_token(
+                name=args.name,
+                scopes=args.scopes,
+                expiry_days=args.expiry_days
+            )
+            print(f"Generated token: {token}")
+            print("\nIMPORTANT: Save this token securely. It will not be shown again.")
+            return 0
+        except ValueError as e:
+            print(f"[ERROR] {e}")
+            return 1
     
     elif args.command == "validate":
-        is_valid = manager.validate_token(args.token)
-        if is_valid:
-            scopes = manager.get_token_scopes(args.token)
-            print("✓ Token is valid")
+        # Get scopes without updating last_used first
+        scopes = manager.get_token_scopes(args.token)
+        if scopes is not None:
+            # Now validate and update last_used
+            manager.validate_token(args.token)
+            print("[OK] Token is valid")
             print(f"Scopes: {', '.join(scopes) if scopes else 'none'}")
             return 0
         else:
-            print("✗ Token is invalid or expired")
+            print("[FAIL] Token is invalid or expired")
             return 1
     
     elif args.command == "revoke":
         success = manager.revoke_token(args.name)
         if success:
-            print(f"✓ Token '{args.name}' has been revoked")
+            print(f"[OK] Token '{args.name}' has been revoked")
             return 0
         else:
-            print(f"✗ Token '{args.name}' not found")
+            print(f"[FAIL] Token '{args.name}' not found")
             return 1
     
     elif args.command == "list":

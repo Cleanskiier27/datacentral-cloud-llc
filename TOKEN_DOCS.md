@@ -98,15 +98,17 @@ manager.revoke_token("my-app-token")
 
 ## Security Considerations
 
-1. **Token Storage**: Tokens are hashed using SHA-256 before storage. Only the hash is stored, never the plain text token.
+1. **Token Storage**: Tokens are hashed using bcrypt before storage. Only the bcrypt hash is stored, never the plain text token. Bcrypt is designed to be computationally expensive and resistant to brute-force attacks.
 
-2. **Token Format**: Tokens use the format `pat_` followed by a URL-safe random string.
+2. **File Permissions**: The tokens.json file is created with restricted permissions (0o600 - owner read/write only) to prevent unauthorized access.
 
-3. **One-Time Display**: The actual token value is only displayed once during generation. Store it securely.
+3. **Token Format**: Tokens use the format `pat_` followed by a URL-safe random string.
 
-4. **Expiry**: Set expiration dates on tokens to limit their lifetime.
+4. **One-Time Display**: The actual token value is only displayed once during generation. Store it securely.
 
-5. **Scopes**: Use scopes to limit what a token can access.
+5. **Expiry**: Set expiration dates on tokens to limit their lifetime.
+
+6. **Scopes**: Use scopes to limit what a token can access.
 
 ## Testing
 

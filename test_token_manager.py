@@ -133,6 +133,16 @@ class TestTokenManager(unittest.TestCase):
         tokens = new_manager.list_tokens()
         self.assertEqual(len(tokens), 1)
         self.assertEqual(tokens[0]["name"], "persistent-token")
+    
+    def test_duplicate_token_name(self):
+        """Test that duplicate token names are rejected."""
+        self.manager.generate_token("duplicate-name")
+        
+        # Attempting to create another token with same name should raise ValueError
+        with self.assertRaises(ValueError) as context:
+            self.manager.generate_token("duplicate-name")
+        
+        self.assertIn("already exists", str(context.exception))
 
 
 if __name__ == "__main__":
