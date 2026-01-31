@@ -1,0 +1,27 @@
+# Ignore virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Ignore build artifacts
+dist/
+build/
+*.spec
+
+# Ignore cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore local data/logs
+data/
+logs/
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
+# Ignore git
+.git/
+.gitignore
