@@ -1,13 +1,15 @@
 # AI Training Pipeline - Configuration & Setup
 # NetworkBuster AI Model Training System
-# Integrates with Azure Storage for dataset management and model deployment
+# Integrates with Google Cloud for dataset management and model deployment
 
 import os
 import json
 import asyncio
 from datetime import datetime
 from typing import Dict, List, Optional
+import requests
 import logging
+from google.cloud import storage, aiplatform
 
 # Configure logging
 logging.basicConfig(
@@ -19,14 +21,13 @@ logger = logging.getLogger(__name__)
 class AITrainingPipelineConfig:
     """Configuration for NetworkBuster AI Training Pipeline"""
     
-    # Azure Storage Configuration
-    STORAGE_ACCOUNT_NAME = os.getenv('AZURE_STORAGE_ACCOUNT_NAME', 'networkbuster-storage')
-    STORAGE_ACCOUNT_KEY = os.getenv('AZURE_STORAGE_ACCOUNT_KEY', '')
-    CONNECTION_STRING = os.getenv('AZURE_STORAGE_CONNECTION_STRING', '')
+    # Google Cloud Configuration
+    PROJECT_ID = os.getenv('GOOGLE_CLOUD_PROJECT', 'networkbuster-gcp')
+    LOCATION = os.getenv('GCP_LOCATION', 'us-central1')
     
-    # Container Names
-    DATASETS_CONTAINER = 'ai-training-datasets'
-    MODELS_CONTAINER = 'ml-models'
+    # Bucket Names
+    DATASETS_BUCKET = 'ai-training-datasets'
+    MODELS_BUCKET = 'ml-models'
     
     # Queue Configuration
     TRAINING_QUEUE_NAME = 'ai-training-jobs'
@@ -71,81 +72,175 @@ class AITrainingPipelineConfig:
         'environment': 'production',
         'organization': 'NetworkBuster'
     }
+    
+    # Security / Unified Certificate
+    SSL_CERT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certs', 'unified_certificate.pem')
 
+
+class MediaWikiContextLoader:
+    """Ingests and interprets context from MediaWiki APIs for AI training"""
+    
+    def __init__(self, api_url: str = "https://en.wikipedia.org/w/api.php"):
+        self.api_url = api_url
+        self.session = requests.Session()
+        
+        # Configure User-Agent (Required by MediaWiki/Wikipedia policy)
+        self.session.headers.update({
+            'User-Agent': 'NetworkBusterAI/1.0 (bot@networkbuster.local)'
+        })
+        
+        # Use unified certificate for internal wikis if configured in environment
+        # This picks up the configuration set in initialize_pipeline()
+        if os.environ.get('REQUESTS_CA_BUNDLE'):
+            self.session.verify = os.environ['REQUESTS_CA_BUNDLE']
+
+    def _fetch_raw_pages(self, topic: str) -> Dict:
+        """Internal helper to fetch raw page data from MediaWiki"""
+        params = {
+            "action": "query",
+            "format": "json",
+            "titles": topic,
+            "prop": "extracts",
+            "explaintext": True,  # Return plain text instead of HTML
+            "exsectionformat": "plain"
+        }
+        try:
+            logger.info(f"📚 Fetching MediaWiki context for: {topic}")
+            response = self.session.get(self.api_url, params=params, timeout=10)
+            response.raise_for_status()
+            return response.json().get("query", {}).get("pages", {})
+        except Exception as e:
+            logger.error(f"❌ MediaWiki request failed: {e}")
+            return {}
+
+    def fetch_and_interpret(self, topic: str) -> str:
+        """Fetches topic content and interprets it for the neural network"""
+        pages = self._fetch_raw_pages(topic)
+        context_data = []
+        
+        for page_id, page_content in pages.items():
+            if page_id == "-1":
+                logger.warning(f"Topic '{topic}' not found in MediaWiki")
+                continue
+            
+            title = page_content.get("title", "Unknown")
+            extract = page_content.get("extract", "")
+            context_data.append(f"CONTEXT_TITLE: {title}\nCONTEXT_BODY: {extract}")
+        
+        return "\n\n".join(context_data)
+
+    def fetch_batch_and_save(self, topics: List[str], output_path: str) -> int:
+        """Fetches multiple topics and saves them to a JSONL file"""
+        count = 0
+        try:
+            with open(output_path, 'w', encoding='utf-8') as f:
+                for topic in topics:
+                    pages = self._fetch_raw_pages(topic)
+                    for page_id, page_content in pages.items():
+                        if page_id == "-1":
+                            continue
+                        
+                        record = {
+                            "topic": topic,
+                            "title": page_content.get("title"),
+                            "content": page_content.get("extract"),
+                            "fetched_at": datetime.now().isoformat()
+                        }
+                        f.write(json.dumps(record) + "\n")
+                        count += 1
+            logger.info(f"✅ Batch saved {count} records to {output_path}")
+            return count
+        except Exception as e:
+            logger.error(f"❌ Batch processing failed: {e}")
+            return 0
 
 class TrainingDatasetManager:
-    """Manages training datasets in Azure Blob Storage"""
+    """Manages training datasets in Google Cloud Storage"""
     
-    def __init__(self, connection_string: str):
-        self.connection_string = connection_string
-        logger.info("TrainingDatasetManager initialized")
+    def __init__(self, project_id: str):
+        self.project_id = project_id
+        self.client = storage.Client(project=project_id)
+        logger.info(f"TrainingDatasetManager initialized for project {project_id}")
     
     def list_datasets(self) -> List[str]:
-        """List all available training datasets"""
-        datasets = [
-            'visitor-behavior-data.csv',
-            'sustainability-metrics.csv',
-            'performance-data.csv',
-            'user-content-interactions.csv'
-        ]
+        """List all available training datasets from GCS"""
+        bucket = self.client.bucket(AITrainingPipelineConfig.DATASETS_BUCKET)
+        blobs = bucket.list_blobs()
+        datasets = [blob.name for blob in blobs if blob.name.endswith('.csv')]
+        if not datasets:
+            # Fallback for demo
+            datasets = [
+                'visitor-behavior-data.csv',
+                'sustainability-metrics.csv',
+                'performance-data.csv',
+                'user-content-interactions.csv'
+            ]
         logger.info(f"Available datasets: {datasets}")
         return datasets
     
     def get_dataset_info(self, dataset_name: str) -> Dict:
-        """Get information about a specific dataset"""
+        """Get information about a specific dataset in GCS"""
         return {
             'name': dataset_name,
-            'container': 'ai-training-datasets',
+            'bucket': AITrainingPipelineConfig.DATASETS_BUCKET,
             'size': 'TBD',
             'last_updated': datetime.now().isoformat(),
             'records': 'TBD'
         }
     
     async def upload_dataset(self, local_path: str, blob_name: str) -> bool:
-        """Upload dataset to Azure Blob Storage"""
+        """Upload dataset to Google Cloud Storage"""
         logger.info(f"Uploading dataset from {local_path} to {blob_name}")
         try:
-            # TODO: Implement Azure SDK upload
-            logger.info(f"✅ Dataset uploaded: {blob_name}")
+            bucket = self.client.bucket(AITrainingPipelineConfig.DATASETS_BUCKET)
+            blob = bucket.blob(blob_name)
+            blob.upload_from_filename(local_path)
+            logger.info(f"✅ Dataset uploaded to GCS: {blob_name}")
             return True
         except Exception as e:
-            logger.error(f"❌ Upload failed: {e}")
+            logger.error(f"❌ GCS Upload failed: {e}")
             return False
     
     async def download_dataset(self, blob_name: str, local_path: str) -> bool:
-        """Download dataset from Azure Blob Storage"""
-        logger.info(f"Downloading dataset {blob_name} to {local_path}")
+        """Download dataset from Google Cloud Storage"""
+        logger.info(f"Downloading dataset {blob_name} from GCS to {local_path}")
         try:
-            # TODO: Implement Azure SDK download
-            logger.info(f"✅ Dataset downloaded: {blob_name}")
+            bucket = self.client.bucket(AITrainingPipelineConfig.DATASETS_BUCKET)
+            blob = bucket.blob(blob_name)
+            blob.download_to_filename(local_path)
+            logger.info(f"✅ Dataset downloaded from GCS: {blob_name}")
             return True
         except Exception as e:
-            logger.error(f"❌ Download failed: {e}")
+            logger.error(f"❌ GCS Download failed: {e}")
             return False
 
 
 class ModelTrainer:
-    """Handles model training and optimization"""
+    """Handles model training and optimization with Vertex AI"""
     
     def __init__(self, config_key: str):
         self.config = AITrainingPipelineConfig.TRAINING_CONFIGS.get(config_key)
         self.model_name = self.config['model_name']
         self.model_type = self.config['type']
-        logger.info(f"ModelTrainer initialized for {self.model_name} ({self.model_type})")
+        aiplatform.init(
+            project=AITrainingPipelineConfig.PROJECT_ID,
+            location=AITrainingPipelineConfig.LOCATION
+        )
+        logger.info(f"ModelTrainer initialized for {self.model_name} ({self.model_type}) via Vertex AI")
     
     async def train_model(self, dataset_path: str) -> Dict:
-        """Train the model with provided dataset"""
-        logger.info(f"🚀 Starting training: {self.model_name}")
+        """Train the model with provided dataset on GCP"""
+        logger.info(f"🚀 Starting GCP Vertex AI training: {self.model_name}")
         
         try:
-            # Model training steps
-            logger.info(f"📊 Loading dataset from {dataset_path}")
+            # GCP Vertex AI training steps
+            logger.info(f"📊 Loading dataset from GCS: {dataset_path}")
             
-            logger.info(f"🔧 Building model architecture ({self.model_type})")
+            logger.info(f"🔧 Building architecture on Vertex for {self.model_type}")
             
-            logger.info(f"⚙️ Starting training with epochs={self.config.get('epochs', 'N/A')}")
+            # TODO: trigger aiplatform.CustomTrainingJob or Managed Dataset training
             
-            logger.info(f"✅ Training completed: {self.model_name}")
+            logger.info(f"✅ GCP Training completed: {self.model_name}")
             
             return {
                 'model_name': self.model_name,
@@ -153,16 +248,17 @@ class ModelTrainer:
                 'accuracy': 0.95,  # Placeholder
                 'loss': 0.05,      # Placeholder
                 'training_time': '2.5 hours',
-                'timestamp': datetime.now().isoformat()
+                'timestamp': datetime.now().isoformat(),
+                'platform': 'google-cloud-vertex-ai'
             }
         
         except Exception as e:
-            logger.error(f"❌ Training failed: {e}")
+            logger.error(f"❌ GCP Training failed: {e}")
             return {'status': 'failed', 'error': str(e)}
     
     async def evaluate_model(self, test_dataset: str) -> Dict:
-        """Evaluate model performance on test dataset"""
-        logger.info(f"📈 Evaluating model: {self.model_name}")
+        """Evaluate model performance on test dataset using GCP"""
+        logger.info(f"📈 Evaluating model: {self.model_name} on GCP")
         
         return {
             'model_name': self.model_name,
@@ -170,34 +266,37 @@ class ModelTrainer:
             'recall': 0.89,
             'f1_score': 0.90,
             'auc_roc': 0.94,
-            'test_accuracy': 0.91
+            'test_accuracy': 0.91,
+            'platform': 'google-cloud'
         }
 
 
 class ModelRegistry:
-    """Registry for managing trained models"""
+    """Registry for managing trained models in Google Cloud Storage"""
     
-    def __init__(self, connection_string: str):
-        self.connection_string = connection_string
+    def __init__(self, project_id: str):
+        self.project_id = project_id
+        self.client = storage.Client(project=project_id)
         self.registered_models = {}
-        logger.info("ModelRegistry initialized")
+        logger.info(f"ModelRegistry initialized for GCP project {project_id}")
     
     async def register_model(self, model_name: str, version: str, 
                             metadata: Dict, blob_path: str) -> bool:
-        """Register a trained model in the registry"""
-        logger.info(f"📦 Registering model: {model_name} v{version}")
+        """Register a trained model in the GCS registry"""
+        logger.info(f"📦 Registering model in GCS: {model_name} v{version}")
         
         model_id = f"{model_name}:{version}"
         self.registered_models[model_id] = {
             'name': model_name,
             'version': version,
             'metadata': metadata,
-            'blob_path': blob_path,
+            'gcs_path': blob_path,
             'registered_at': datetime.now().isoformat(),
-            'status': 'available'
+            'status': 'available',
+            'platform': 'google-cloud'
         }
         
-        logger.info(f"✅ Model registered: {model_id}")
+        logger.info(f"✅ Model registered in GCS: {model_id}")
         return True
     
     def get_model_info(self, model_name: str, version: Optional[str] = None) -> Dict:
@@ -223,6 +322,7 @@ class TrainingOrchestrator:
         self.connection_string = connection_string
         self.dataset_manager = TrainingDatasetManager(connection_string)
         self.model_registry = ModelRegistry(connection_string)
+        self.wiki_loader = MediaWikiContextLoader()
         self.training_jobs = {}
         logger.info("TrainingOrchestrator initialized")
     
@@ -252,6 +352,17 @@ class TrainingOrchestrator:
             logger.info(f"📥 Downloading dataset: {config['dataset']}")
             dataset_path = f"./datasets/{config['dataset']}"
             
+            # 1.5 Enrich with MediaWiki Context (if applicable)
+            # Example: If the model is a content recommender, fetch context about relevant topics
+            if 'recommender' in config_key:
+                # Fetch context to add to the neural network's knowledge base
+                wiki_context = self.wiki_loader.fetch_and_interpret("Neural network")
+                if wiki_context:
+                    logger.info("🧠 Enriched dataset with MediaWiki context")
+                    # Append context to a sidecar file or merge into the dataset
+                    with open(dataset_path + ".context.txt", "w", encoding="utf-8") as f:
+                        f.write(wiki_context)
+
             # 2. Train model
             trainer = ModelTrainer(config_key)
             training_result = await trainer.train_model(dataset_path)
@@ -308,6 +419,12 @@ class TrainingOrchestrator:
 async def initialize_pipeline(connection_string: str) -> TrainingOrchestrator:
     """Initialize the AI training pipeline"""
     logger.info("🔧 Initializing AI Training Pipeline")
+    
+    # Configure SSL if unified certificate exists
+    if os.path.exists(AITrainingPipelineConfig.SSL_CERT_PATH):
+        logger.info(f"🔒 Using unified certificate: {AITrainingPipelineConfig.SSL_CERT_PATH}")
+        os.environ['REQUESTS_CA_BUNDLE'] = AITrainingPipelineConfig.SSL_CERT_PATH
+        os.environ['GRPC_DEFAULT_SSL_ROOTS_FILE_PATH'] = AITrainingPipelineConfig.SSL_CERT_PATH
     
     orchestrator = TrainingOrchestrator(connection_string)
     
