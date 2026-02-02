@@ -1,0 +1,27 @@
+﻿NetworkBuster Personal Use License
+
+Copyright (c) 2026 NetworkBuster
+
+PERSONAL USE ONLY
+
+This software is provided for personal, non-commercial use only.
+
+PERMISSIONS:
+- Install and use on personal systems
+- Modify for personal use
+- Test on systems you own or have authorization to test
+
+RESTRICTIONS:
+- NO commercial use
+- NO redistribution without permission
+- NO warranty provided
+- NO liability accepted
+
+SECURITY NOTICE:
+Use security testing features only on systems you own or have explicit 
+authorization to test. Unauthorized access to computer systems is illegal.
+
+PIN: drew2
+Machine Authorized: Personal Use
+
+For licensing inquiries: cadillac.gas@outlook.com

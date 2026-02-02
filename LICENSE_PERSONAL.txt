@@ -1,0 +1,66 @@
+NetworkBuster Personal Use License
+===================================
+
+Copyright (c) 2026 NetworkBuster
+Licensed to: cadillac.gas@outlook.com
+
+PERSONAL USE ONLY LICENSE
+
+Permission is hereby granted to the individual identified above (the "Licensee") 
+to use this software for PERSONAL, NON-COMMERCIAL purposes only.
+
+TERMS AND CONDITIONS:
+
+1. PERSONAL USE ONLY
+   This software is licensed exclusively for personal, non-commercial use by 
+   the Licensee on their personal computing devices.
+
+2. RESTRICTIONS
+   - NO commercial use permitted
+   - NO redistribution to third parties
+   - NO public hosting or deployment
+   - NO sublicensing or transfer of license
+   - NO reverse engineering for commercial purposes
+   - SINGLE USER license only
+
+3. OWNERSHIP
+   All code, applications, and associated materials remain the property of 
+   the Licensee for personal use only.
+
+4. WARRANTY DISCLAIMER
+   This software is provided "AS IS" without warranty of any kind, express 
+   or implied, including but not limited to warranties of merchantability, 
+   fitness for a particular purpose, and non-infringement.
+
+5. LIMITATION OF LIABILITY
+   In no event shall the authors or copyright holders be liable for any claim, 
+   damages, or other liability arising from the use of this software.
+
+6. TERMINATION
+   This license automatically terminates if you violate any of these restrictions. 
+   Upon termination, you must destroy all copies of the software.
+
+7. AUTHORIZED USE
+   - Machine: Personal workstation/laptop only
+   - User: cadillac.gas@outlook.com only
+   - Purpose: Personal projects and learning
+   - Environment: Local development only
+
+AUTHORIZED FOR:
+- Personal development
+- Personal learning and experimentation
+- Personal automation tasks
+- Personal project management
+
+NOT AUTHORIZED FOR:
+- Commercial deployment
+- Public distribution
+- Enterprise use
+- Revenue-generating activities
+- Service provision to third parties
+
+By using this software, you acknowledge that you have read and understood 
+this license and agree to be bound by its terms.
+
+Issue Date: February 2, 2026
+License ID: NB-PERSONAL-2026-E
