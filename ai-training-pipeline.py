@@ -10,6 +10,18 @@ from typing import Dict, List, Optional
 import requests
 import logging
 from google.cloud import storage, aiplatform
+import sys
+from pathlib import Path
+
+# Add training directory to path for xkcd knowledge loader
+sys.path.insert(0, str(Path(__file__).parent / 'training'))
+
+# Import xkcd knowledge loader (imported here as it depends on Path setup above)
+try:
+    from xkcd_knowledge_loader import XKCDKnowledgeLoader
+    XKCD_LOADER_AVAILABLE = True
+except ImportError:
+    XKCD_LOADER_AVAILABLE = False
 
 # Configure logging
 logging.basicConfig(
@@ -153,6 +165,60 @@ class MediaWikiContextLoader:
         except Exception as e:
             logger.error(f"❌ Batch processing failed: {e}")
             return 0
+
+class XKCDStoryContextLoader:
+    """Loads xkcd stories as additional training context for AI models"""
+    
+    def __init__(self, training_dir: str = "training"):
+        self.training_dir = Path(training_dir)
+        logger.info("XKCDStoryContextLoader initialized")
+    
+    def load_story_knowledge(self) -> str:
+        """Load xkcd stories and format as AI training knowledge"""
+        try:
+            # Check if knowledge file already exists
+            knowledge_file = self.training_dir / "xkcd-ai-knowledge.txt"
+            
+            if knowledge_file.exists():
+                logger.info(f"📖 Loading existing xkcd knowledge from {knowledge_file}")
+                return knowledge_file.read_text(encoding='utf-8')
+            
+            # Otherwise, load from JSONL files
+            if not XKCD_LOADER_AVAILABLE:
+                logger.warning("⚠️  xkcd_knowledge_loader not available")
+                return ""
+            
+            logger.info("📚 Loading xkcd stories from JSONL files...")
+            loader = XKCDKnowledgeLoader(str(self.training_dir))
+            stories = loader.load_stories()
+            
+            if stories:
+                knowledge = loader.format_as_ai_knowledge(stories)
+                # Cache the knowledge
+                knowledge_file.write_text(knowledge, encoding='utf-8')
+                logger.info(f"✅ Loaded {len(stories)} xkcd stories as AI knowledge")
+                return knowledge
+            else:
+                logger.warning("⚠️  No xkcd stories found")
+                return ""
+        
+        except Exception as e:
+            logger.error(f"❌ Failed to load xkcd knowledge: {e}")
+            return ""
+    
+    def get_story_context_for_training(self, max_stories: int = 100) -> str:
+        """Get a subset of stories formatted for training context"""
+        knowledge = self.load_story_knowledge()
+        
+        if not knowledge:
+            return ""
+        
+        # Split by story sections and limit
+        sections = knowledge.split("STORY #")
+        header = sections[0] if sections else ""
+        stories = sections[1:max_stories+1] if len(sections) > 1 else []
+        
+        return header + "".join(f"STORY #{story}" for story in stories)
 
 class TrainingDatasetManager:
     """Manages training datasets in Google Cloud Storage"""
@@ -437,6 +503,20 @@ if __name__ == "__main__":
     logger.info("=" * 60)
     logger.info("NetworkBuster AI Training Pipeline")
     logger.info("=" * 60)
+    
+    # Load xkcd story knowledge
+    logger.info("\n📚 Loading xkcd Story Knowledge...")
+    story_loader = XKCDStoryContextLoader()
+    story_knowledge = story_loader.get_story_context_for_training(max_stories=5)
+    
+    if story_knowledge:
+        logger.info("✅ xkcd stories loaded successfully!")
+        logger.info("\n=== Sample Knowledge Preview ===")
+        # Print first 500 characters
+        preview = story_knowledge[:500] + "..." if len(story_knowledge) > 500 else story_knowledge
+        print(preview)
+    else:
+        logger.warning("⚠️  No xkcd stories available")
     
     # Configuration
     connection_string = os.getenv(

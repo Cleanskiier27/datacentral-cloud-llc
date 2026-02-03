@@ -42,3 +42,12 @@ htmlcov/
 # Token storage
 tokens.json
 *.db
+
+# Java
+target/
+*.class
+*.jar
+!lib/*.jar
+
+# Generated AI knowledge files (build artifacts)
+training/xkcd-ai-knowledge*.txt
