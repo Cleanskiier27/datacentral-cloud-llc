@@ -54,19 +54,8 @@ class XKCDKnowledgeLoader:
         
         return stories
     
-    def format_as_ai_knowledge(self, stories: List[Dict]) -> str:
-        """Format stories as AI training context"""
-        knowledge_lines = ["=== AI TRAINING KNOWLEDGE: XKCD STORIES ===\n"]
-        
-        for story in stories:
-            formatted = self._format_story(story)
-            knowledge_lines.append(formatted)
-            knowledge_lines.append("")  # Empty line between stories
-        
-        return "\n".join(knowledge_lines)
-    
-    def _format_story(self, story: Dict) -> str:
-        """Format a single story for AI consumption"""
+    def format_story(self, story: Dict) -> str:
+        """Format a single story for AI consumption (public method)"""
         transcript = story.get('transcript', '')
         if transcript:
             # Truncate long transcripts
@@ -79,6 +68,17 @@ ALT_TEXT: {story.get('alt', '')}
 TRANSCRIPT: {transcript_preview}
 SOURCE: {story.get('source_url', '')}
 LICENSE: {story.get('license', 'CC BY-NC 2.5')} | {story.get('attribution', 'xkcd — Randall Munroe')}"""
+    
+    def format_as_ai_knowledge(self, stories: List[Dict]) -> str:
+        """Format stories as AI training context"""
+        knowledge_lines = ["=== AI TRAINING KNOWLEDGE: XKCD STORIES ===\n"]
+        
+        for story in stories:
+            formatted = self.format_story(story)
+            knowledge_lines.append(formatted)
+            knowledge_lines.append("")  # Empty line between stories
+        
+        return "\n".join(knowledge_lines)
     
     def save_ai_knowledge(self, stories: List[Dict], output_path: str) -> None:
         """Save formatted knowledge to file"""
@@ -113,7 +113,7 @@ def main():
     # Print sample stories
     print("\n=== Sample Stories as AI Knowledge ===")
     for story in stories[:3]:
-        print(loader._format_story(story))
+        print(loader.format_story(story))
         print()
     
     # Save full knowledge base

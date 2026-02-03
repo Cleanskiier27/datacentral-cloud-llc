@@ -168,14 +168,22 @@ public class StoryKnowledgeLoader {
         }
         
         public String toAIFormat() {
+            String transcriptText;
+            if (transcript.isEmpty()) {
+                transcriptText = "[No transcript]";
+            } else if (transcript.length() > 200) {
+                transcriptText = transcript.substring(0, 200) + "...";
+            } else {
+                transcriptText = transcript;
+            }
+            
             return String.format(
                 "STORY #%d: %s\n" +
                 "ALT_TEXT: %s\n" +
                 "TRANSCRIPT: %s\n" +
                 "SOURCE: %s\n" +
                 "LICENSE: %s | %s",
-                num, title, alt, 
-                transcript.isEmpty() ? "[No transcript]" : transcript.substring(0, Math.min(200, transcript.length())) + "...",
+                num, title, alt, transcriptText,
                 sourceUrl, license, attribution
             );
         }

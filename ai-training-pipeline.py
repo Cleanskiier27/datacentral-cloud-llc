@@ -16,6 +16,13 @@ from pathlib import Path
 # Add training directory to path for xkcd knowledge loader
 sys.path.insert(0, str(Path(__file__).parent / 'training'))
 
+# Import xkcd knowledge loader (imported here as it depends on Path setup above)
+try:
+    from xkcd_knowledge_loader import XKCDKnowledgeLoader
+    XKCD_LOADER_AVAILABLE = True
+except ImportError:
+    XKCD_LOADER_AVAILABLE = False
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -177,9 +184,11 @@ class XKCDStoryContextLoader:
                 return knowledge_file.read_text(encoding='utf-8')
             
             # Otherwise, load from JSONL files
-            logger.info("📚 Loading xkcd stories from JSONL files...")
-            from xkcd_knowledge_loader import XKCDKnowledgeLoader
+            if not XKCD_LOADER_AVAILABLE:
+                logger.warning("⚠️  xkcd_knowledge_loader not available")
+                return ""
             
+            logger.info("📚 Loading xkcd stories from JSONL files...")
             loader = XKCDKnowledgeLoader(str(self.training_dir))
             stories = loader.load_stories()
             
