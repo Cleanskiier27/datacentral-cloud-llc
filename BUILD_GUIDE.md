@@ -22,7 +22,7 @@ The **root build** is the complete NetworkBuster package with all features and c
 
 **Use case:** Development, full installations, or when all features are needed.
 
-**Size:** ~186KB compressed
+**Size:** ~188KB compressed
 
 ### 2. Lightweight Distribution
 
