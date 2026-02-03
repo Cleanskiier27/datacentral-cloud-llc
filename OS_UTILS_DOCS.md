@@ -236,7 +236,7 @@ os_info = OSInfo()
 
 if os_info.is_windows:
     # Windows-specific command
-    ProcessManager.run_command(["dir"], shell=True)
+    ProcessManager.run_command(["cmd", "/c", "dir"])
 elif os_info.is_linux or os_info.is_macos:
     # Unix-specific command
     ProcessManager.run_command(["ls", "-la"])
@@ -333,8 +333,7 @@ utils/
 examples/
 └── os_utils_demo.py     # Demo script
 
-tests/
-└── test_os_utils.py     # Test suite
+test_os_utils.py         # Test suite (in root directory)
 ```
 
 ## Migration from platform.py

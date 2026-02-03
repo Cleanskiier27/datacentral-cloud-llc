@@ -77,6 +77,16 @@ class OSInfo:
 class PathManager:
     """Cross-platform path management"""
     
+    # Cache OSInfo instance at class level
+    _os_info = None
+    
+    @classmethod
+    def _get_os_info(cls) -> OSInfo:
+        """Get cached OSInfo instance"""
+        if cls._os_info is None:
+            cls._os_info = OSInfo()
+        return cls._os_info
+    
     @staticmethod
     def get_home_dir() -> Path:
         """Get user home directory"""
@@ -88,10 +98,10 @@ class PathManager:
         import tempfile
         return Path(tempfile.gettempdir())
     
-    @staticmethod
-    def get_app_data_dir(app_name: str = "NetworkBuster") -> Path:
+    @classmethod
+    def get_app_data_dir(cls, app_name: str = "NetworkBuster") -> Path:
         """Get application data directory"""
-        os_info = OSInfo()
+        os_info = cls._get_os_info()
         if os_info.is_windows:
             base = Path(os.environ.get("APPDATA", Path.home() / "AppData" / "Roaming"))
         elif os_info.is_macos:
@@ -103,10 +113,10 @@ class PathManager:
         app_dir.mkdir(parents=True, exist_ok=True)
         return app_dir
     
-    @staticmethod
-    def get_config_dir(app_name: str = "NetworkBuster") -> Path:
+    @classmethod
+    def get_config_dir(cls, app_name: str = "NetworkBuster") -> Path:
         """Get application config directory"""
-        os_info = OSInfo()
+        os_info = cls._get_os_info()
         if os_info.is_windows:
             base = Path(os.environ.get("APPDATA", Path.home() / "AppData" / "Roaming"))
         elif os_info.is_macos:
@@ -118,10 +128,10 @@ class PathManager:
         config_dir.mkdir(parents=True, exist_ok=True)
         return config_dir
     
-    @staticmethod
-    def get_logs_dir(app_name: str = "NetworkBuster") -> Path:
+    @classmethod
+    def get_logs_dir(cls, app_name: str = "NetworkBuster") -> Path:
         """Get application logs directory"""
-        os_info = OSInfo()
+        os_info = cls._get_os_info()
         if os_info.is_windows:
             base = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
             logs_dir = base / app_name / "logs"
@@ -133,10 +143,10 @@ class PathManager:
         logs_dir.mkdir(parents=True, exist_ok=True)
         return logs_dir
     
-    @staticmethod
-    def get_cache_dir(app_name: str = "NetworkBuster") -> Path:
+    @classmethod
+    def get_cache_dir(cls, app_name: str = "NetworkBuster") -> Path:
         """Get application cache directory"""
-        os_info = OSInfo()
+        os_info = cls._get_os_info()
         if os_info.is_windows:
             base = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
             cache_dir = base / app_name / "cache"
@@ -231,7 +241,8 @@ class EnvironmentManager:
     def get_path() -> List[str]:
         """Get PATH directories as list"""
         path_var = os.environ.get("PATH", "")
-        separator = ";" if OSInfo().is_windows else ":"
+        # Use module-level cached os_info instance
+        separator = ";" if os_info.is_windows else ":"
         return [p for p in path_var.split(separator) if p]
     
     @staticmethod
