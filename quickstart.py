@@ -78,6 +78,13 @@ def main():
     else:
         print("   ⚠️ Some dependencies may not have installed")
     
+    # Step 3.5: Initialize Hardware Key
+    print("\n3.5️⃣ Initialize Hardware Key Interface...")
+    response = input("   Do you want to set up a hardware key (e.g., YubiKey) now? (y/n): ").lower()
+    if response == 'y':
+        print("\n   Running hardware key setup...")
+        os.system(f"{sys.executable} scripts/setup_hardware_key.py")
+
     # Step 4: Show next steps
     print("\n4️⃣ Next Steps:")
     print("\n   Option A - Use WebApp:")
