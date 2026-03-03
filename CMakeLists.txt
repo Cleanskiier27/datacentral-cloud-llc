@@ -10,9 +10,10 @@ add_library(neural
 )
 target_include_directories(neural PUBLIC engine/neural)
 
-# --- LED board library ---
+# --- LED board library (includes MatrixAnimator) ---
 add_library(led
     engine/led/LEDBoard.cpp
+    engine/led/MatrixAnimator.cpp
 )
 target_include_directories(led PUBLIC engine/led)
 
@@ -27,3 +28,9 @@ add_executable(artemis_demo
     examples/artemis_demo/main.cpp
 )
 target_link_libraries(artemis_demo PRIVATE neural led)
+
+# --- Matrix LED board animation demo ---
+add_executable(matrix_demo
+    examples/matrix_demo/main.cpp
+)
+target_link_libraries(matrix_demo PRIVATE led)
