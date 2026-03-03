@@ -1,4 +1,4 @@
-.PHONY: launchpad 10-1 launch ac lift
+.PHONY: launchpad 10-1 launch ac lift setup-arch setup-linux
 
 launchpad:
 	APP_URL=https://networkbuster.net $(MAKE) 10-1
@@ -17,3 +17,11 @@ ac:
 
 lift:
 	@echo "[lift] Run any post-start tasks here (e.g., worker processes, scheduled jobs)."
+
+setup-arch:
+	chmod +x ./setup_arch.sh
+	./setup_arch.sh
+
+setup-linux:
+	chmod +x ./setup_linux.sh
+	./setup_linux.sh

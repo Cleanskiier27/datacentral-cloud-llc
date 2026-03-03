@@ -4,6 +4,49 @@ The technical evolution of terminal-based environments on Arch Linux has progres
 
 > Windows quick-start: for one-command setup of WSL + ArchWSL prep and ASCII LED preview, see the "Quick Setup (Windows)" section in [README.md](../README.md).
 
+## Project Setup and Linux Support
+
+For project setup on Linux environments:
+
+- **Arch Linux / Arch WSL**
+    ```sh
+    make setup-arch
+    ```
+
+- **Ubuntu / Debian / Kali (APT-based)**
+    ```sh
+    chmod +x ./setup_linux.sh
+    ./setup_linux.sh
+    ```
+
+### Linux Troubleshooting Quick Fixes
+
+- **Arch `pacman` keyring issues**
+    ```sh
+    sudo pacman-key --init
+    sudo pacman-key --populate archlinux
+    sudo pacman -Syy
+    ```
+
+- **Arch mirror issues**
+    ```sh
+    sudo pacman -S reflector
+    sudo reflector --country US --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
+    sudo pacman -Syy
+    ```
+
+- **Certificate trust refresh (Linux)**
+    - Arch:
+        ```sh
+        sudo cp certs/unified_certificate.pem /etc/ca-certificates/trust-source/anchors/networkbuster.crt
+        sudo update-ca-trust
+        ```
+    - Debian/Ubuntu/Kali:
+        ```sh
+        sudo cp certs/unified_certificate.pem /usr/local/share/ca-certificates/networkbuster.crt
+        sudo update-ca-certificates
+        ```
+
 ## Theoretical Foundations and the Arch Linux Visualization Ecosystem
 
 Arch Linux, defined by its simplicity, rolling-release model, and user-centric philosophy, provides the ideal substrate for high-performance terminal visualizations. Unlike more restrictive distributions, Arch facilitates the installation of cutting-edge rendering engines via the Arch User Repository (AUR), allowing for a high degree of personalization in the display of digital rain, originally popularized by the 1999 film "The Matrix". This visual effect, characterized by kinetic typography and vertically falling computer code, serves as both a benchmark for terminal emulator efficiency and a medium for creative expression.

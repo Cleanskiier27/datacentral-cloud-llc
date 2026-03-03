@@ -55,3 +55,47 @@ Notes:
 - Run in PowerShell; the script auto-elevates for WSL/Appx setup unless `-NoElevation` is provided.
 - If Arch is not already installed, the script opens the ArchWSL releases page.
 - After Arch install, start it with `wsl -d Arch`.
+
+## Arch Linux Setup (Project)
+
+For native Arch Linux environments (including Arch on WSL), run:
+
+```sh
+make setup-arch
+```
+
+This installs Java 17, Maven, Python tooling, project dependencies, and configures the project SSL certificate trust chain.
+
+## Linux Support
+
+- **Arch Linux / Arch WSL**: `make setup-arch`
+- **Ubuntu / Debian / Kali**: `make setup-linux`
+
+### Arch Troubleshooting
+
+- **`pacman` keyring errors**
+	```sh
+	sudo pacman-key --init
+	sudo pacman-key --populate archlinux
+	sudo pacman -Syy
+	```
+
+- **Mirror / package download issues**
+	```sh
+	sudo pacman -S reflector
+	sudo reflector --country US --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
+	sudo pacman -Syy
+	```
+
+- **Certificate trust refresh**
+	```sh
+	sudo cp certs/unified_certificate.pem /etc/ca-certificates/trust-source/anchors/networkbuster.crt
+	sudo update-ca-trust
+	```
+
+- **WSL Arch fails to start (`Wsl/Service/E_UNEXPECTED`)**
+	Reboot Windows, then run:
+	```powershell
+	wsl -d Arch
+	wsl -l -v
+	```
