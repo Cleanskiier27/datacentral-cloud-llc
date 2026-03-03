@@ -2,6 +2,8 @@
 
 A secure personal access token (PAT) management system for networkbuster.
 
+> Windows quick-start: for one-command setup of WSL + ArchWSL prep and ASCII LED preview, see the "Quick Setup (Windows)" section in [README.md](README.md).
+
 ## Features
 
 - **Secure Token Generation**: Generates cryptographically secure tokens using Python's `secrets` module

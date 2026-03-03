@@ -2,6 +2,8 @@
 
 The technical evolution of terminal-based environments on Arch Linux has progressed from simple text manipulation to the creation of complex, high-performance visual simulations that integrate image processing, automation, and artificial intelligence. The synthesis of an automated workspace capable of rendering personalized ASCII art within a digital rain framework requires a deep integration of hardware acceleration, software versioning, and cloud-based asset management. This report explores the mechanisms by which a user can compile photographic data into a matrix-style terminal display, orchestrate these visuals through specialized Visual Studio Code (VS Code) configurations, and archive the results via high-fidelity video protocols, all while navigating the significant hardware and system impacts inherent in high-speed character rendering.
 
+> Windows quick-start: for one-command setup of WSL + ArchWSL prep and ASCII LED preview, see the "Quick Setup (Windows)" section in [README.md](../README.md).
+
 ## Theoretical Foundations and the Arch Linux Visualization Ecosystem
 
 Arch Linux, defined by its simplicity, rolling-release model, and user-centric philosophy, provides the ideal substrate for high-performance terminal visualizations. Unlike more restrictive distributions, Arch facilitates the installation of cutting-edge rendering engines via the Arch User Repository (AUR), allowing for a high degree of personalization in the display of digital rain, originally popularized by the 1999 film "The Matrix". This visual effect, characterized by kinetic typography and vertically falling computer code, serves as both a benchmark for terminal emulator efficiency and a medium for creative expression.

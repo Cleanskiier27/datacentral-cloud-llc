@@ -33,3 +33,25 @@ You can override `APP_URL` for a different environment:
 ```sh
 APP_URL=https://staging.example.com make launchpad
 ```
+
+## Quick Setup (Windows)
+
+Use the one-click script to prepare WSL, optionally install ArchWSL, and open the ASCII LED preview in a new window:
+
+```powershell
+.\scripts\quick-setup-arch-preview.ps1
+```
+
+Optional examples:
+
+```powershell
+.\scripts\quick-setup-arch-preview.ps1 -ArchBundlePath "C:\Downloads\ArchWSL.msixbundle"
+.\scripts\quick-setup-arch-preview.ps1 -Interactive
+.\scripts\quick-setup-arch-preview.ps1 -ForcePreviewRefresh
+.\scripts\quick-setup-arch-preview.ps1 -SkipWslSetup
+```
+
+Notes:
+- Run in PowerShell; the script auto-elevates for WSL/Appx setup unless `-NoElevation` is provided.
+- If Arch is not already installed, the script opens the ArchWSL releases page.
+- After Arch install, start it with `wsl -d Arch`.

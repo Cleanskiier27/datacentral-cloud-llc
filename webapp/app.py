@@ -3,6 +3,7 @@ import subprocess
 import os
 import sys
 from pathlib import Path
+from markupsafe import escape
 
 app = Flask(__name__)
 
@@ -33,6 +34,46 @@ FLASH_COMMANDS = {
 @app.route('/')
 def index():
     return render_template('index.html', commands=FLASH_COMMANDS)
+
+
+@app.route('/ascii-led')
+def ascii_led_preview():
+    """Render the ASCII LED screenplay in a browser-friendly preformatted view."""
+    ascii_file = Path(__file__).parent.parent / "assets" / "matrix_screenplay.txt"
+    if not ascii_file.exists():
+        return "ASCII source file not found.", 404
+
+    content = ascii_file.read_text(encoding="utf-8", errors="replace")
+    escaped_content = escape(content)
+    return f"""
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\" />
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+    <title>ASCII LED Preview</title>
+    <style>
+        body {{
+            margin: 0;
+            padding: 20px;
+            background: #020b06;
+            color: #4dff9a;
+            font-family: Consolas, 'Courier New', monospace;
+        }}
+        pre {{
+            white-space: pre;
+            overflow: auto;
+            border: 1px solid #1f6b45;
+            padding: 16px;
+            background: #001f12;
+        }}
+    </style>
+</head>
+<body>
+    <pre>{escaped_content}</pre>
+</body>
+</html>
+"""
 
 @app.route('/execute/<cmd_id>', methods=['POST'])
 def execute(cmd_id):
