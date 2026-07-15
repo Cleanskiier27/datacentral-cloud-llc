@@ -1,6 +1,8 @@
 # datacentral-cloud-llc
 home of networkbuster
 
+> **Licensing notice**: This repository includes a private commercial license draft at [`LICENSE_PRIVATE`](./LICENSE_PRIVATE) with distribution terms restricted to NASA, U.S. government entities, and SpaceX (including AI-related use constraints).
+
 ## Features
 
 - **Personal Access Token Management**: Secure token generation, validation, and management system
