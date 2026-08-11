@@ -44,7 +44,7 @@ def main():
     print("   ✓ Python found")
     
     # Check Git
-    success, _, _ = run_command(["git", "--version"], shell=True)
+    success, _, _ = run_command(["git", "--version"])
     if not success:
         print("❌ Git not found")
         return False
