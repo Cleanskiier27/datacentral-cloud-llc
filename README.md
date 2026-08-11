@@ -14,6 +14,8 @@ See [TOKEN_DOCS.md](TOKEN_DOCS.md) for detailed documentation on the Personal Ac
 
 See [OS_UTILS_DOCS.md](OS_UTILS_DOCS.md) for detailed documentation on the OS Utilities module.
 
+See [docs/README.md](docs/README.md) for the full documentation index (deployment, networking, reference, and feature guides).
+
 ## Running the Application
 
 ### `make launchpad`
