@@ -6,6 +6,8 @@
 
 name: Moonbase Alpha - The Everlasting Saga
 description: After an ecological collapse nearly destroys Earth, a lone, cynical engineer and a visionary scientist must pilot the legendary, physics-defying spacecraft, the Network Buster, to the derelict, ancient installation known as Moonbase Alpha—the repository of a forgotten artifact, the Lost Project, which promises not salvation, but a total, frightening rewrite of global reality.
+model: claude-sonnet-5
+reasoning_effort: medium
 ---
 
 # Moonbase Alpha - The Everlasting Saga Agent
