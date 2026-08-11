@@ -1,4 +1,8 @@
 // Popup script for CRT Mod controls
+
+// Cross-browser WebExtension API shim (see background.js for rationale).
+const browserAPI = typeof browser !== "undefined" ? browser : chrome;
+
 document.addEventListener("DOMContentLoaded", () => {
     const shaderToggle = document.getElementById("shader-toggle");
     const shaderType = document.getElementById("shader-type");
@@ -7,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const soundToggle = document.getElementById("sound-toggle");
 
     // Load current state
-    chrome.runtime.sendMessage({ type: "GET_STATE" }, (response) => {
-        if (chrome.runtime.lastError || !response) return;
+    browserAPI.runtime.sendMessage({ type: "GET_STATE" }, (response) => {
+        if (browserAPI.runtime.lastError || !response) return;
         if (response) {
             shaderToggle.checked = response.shaderEnabled;
             shaderType.value = response.shaderType || "crt";
@@ -26,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             soundsEnabled: soundToggle.checked
         };
 
-        chrome.runtime.sendMessage({ type: "SET_STATE", state: newState });
+        browserAPI.runtime.sendMessage({ type: "SET_STATE", state: newState });
     }
 
     shaderToggle.addEventListener("change", saveState);
