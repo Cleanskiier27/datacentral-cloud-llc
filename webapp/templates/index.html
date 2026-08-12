@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetworkBuster FlashCommands</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a2e; color: #e1e1e1; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        h1 { color: #00ff88; text-align: center; }
+        .command-card { background: #16213e; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #00ff88; }
+        .command-card h2 { margin-top: 0; font-size: 1.2em; }
+        .btn { background: #00ff88; color: #1a1a2e; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn:hover { background: #00cc6a; }
+        #output { background: #0f3460; padding: 15px; border-radius: 8px; font-family: 'Consolas', monospace; white-space: pre-wrap; margin-top: 20px; min-height: 100px; overflow-y: auto; max-height: 400px; border: 1px solid #16213e; }
+        .spinner { display: none; margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 NetworkBuster WebApp</h1>
+        <p style="text-align: center;">Flash Commands Control Center</p>
+        
+        <div id="commands">
+            {% for cmd_id, info in commands.items() %}
+            <div class="command-card">
+                <h2>{{ info.name }}</h2>
+                <p>{{ info.description }}</p>
+                <button class="btn" onclick="runCommand('{{ cmd_id }}')">Execute</button>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id="output-box">
+            <h3>Execution Output:</h3>
+            <div id="output">Ready...</div>
+        </div>
+    </div>
+
+    <script>
+        function runCommand(cmdId) {
+            const output = document.getElementById('output');
+            output.innerText = 'Executing ' + cmdId + '...';
+            
+            fetch('/execute/' + cmdId, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        output.innerHTML = '<span style="color: #00ff88;">[SUCCESS]</span>\n' + data.stdout;
+                    } else {
+                        output.innerHTML = '<span style="color: #ff4d4d;">[ERROR]</span>\n' + (data.stderr || data.message || 'Unknown error');
+                    }
+                })
+                .catch(error => {
+                    output.innerHTML = '<span style="color: #ff4d4d;">[EXCEPTION]</span>\n' + error;
+                });
+        }
+    </script>
+</body>
+</html>
