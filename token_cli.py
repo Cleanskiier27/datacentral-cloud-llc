@@ -27,7 +27,7 @@ def main():
     generate_parser.add_argument(
         "--scopes",
         nargs="+",
-        help="Permission scopes for the token"
+        help="Permission scopes for the token (e.g., purchasing_economy, space_economy_tax_metrics)"
     )
     generate_parser.add_argument(
         "--expiry-days",
@@ -59,6 +59,12 @@ def main():
     subparsers.add_parser(
         "list",
         help="List all tokens"
+    )
+    
+    # List standard scopes command
+    subparsers.add_parser(
+        "scopes",
+        help="List standard permission scopes"
     )
     
     args = parser.parse_args()
@@ -121,6 +127,12 @@ def main():
             print(f"  Expiry: {token['expiry'] or 'never'}")
             print(f"  Last used: {token['last_used'] or 'never'}")
             print()
+        return 0
+    
+    elif args.command == "scopes":
+        print("Standard permission scopes available:")
+        for scope, desc in manager.get_standard_scopes().items():
+            print(f"  {scope:<30} - {desc}")
         return 0
     
     return 0

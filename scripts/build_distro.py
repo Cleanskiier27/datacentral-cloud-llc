@@ -1,5 +1,4 @@
 import shutil
-import os
 import time
 import argparse
 import tempfile
@@ -30,6 +29,10 @@ def build_root_distro(project_root, dist_dir, timestamp):
             "training",
             "scripts",
             "tests",
+            "docs",
+            "assets",
+            "engine",
+            "examples",
         ]
         
         # Files to include
@@ -47,6 +50,8 @@ def build_root_distro(project_root, dist_dir, timestamp):
             "quickstart.py",
             "requirements.txt",
             "setup_linux.sh",
+            "setup_arch.sh",
+            "Makefile",
             "test_token_manager.py",
             "token_cli.py",
             "token_manager.py",
@@ -54,6 +59,8 @@ def build_root_distro(project_root, dist_dir, timestamp):
             "README.md",
             "TOKEN_DOCS.md",
             "DOWNLOAD_GUIDE.md",
+            "BUILD_GUIDE.md",
+            "OS_UTILS_DOCS.md",
             "IMPLEMENTATION_SUMMARY.md",
             "CONSOLIDATION_SUMMARY.md",
             "PIP_UPGRADE_SUMMARY.md",
@@ -193,7 +200,6 @@ def build_distro(build_type="root"):
         print(f"   Valid options: 'root', 'lightweight'")
         return None
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Build NetworkBuster Distribution",
@@ -205,10 +211,10 @@ Build Types:
   both         Build both root and lightweight versions
 
 Examples:
-  python build_distro.py              # Build root (full) version
-  python build_distro.py --type root  # Build root (full) version
-  python build_distro.py --type lightweight  # Build lightweight version
-  python build_distro.py --type both  # Build both versions
+  python scripts/build_distro.py              # Build root (full) version
+  python scripts/build_distro.py --type root  # Build root (full) version
+  python scripts/build_distro.py --type lightweight  # Build lightweight version
+  python scripts/build_distro.py --type both  # Build both versions
         """
     )
     
