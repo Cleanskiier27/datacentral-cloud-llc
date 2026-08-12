@@ -22,8 +22,26 @@ add_executable(neural_demo
 )
 target_link_libraries(neural_demo PRIVATE neural)
 
+# --- Overhead light library ---
+add_library(overhead
+    engine/overhead/OverheadLight.cpp
+)
+target_include_directories(overhead PUBLIC engine/overhead)
+
+# --- Engineering module library ---
+add_library(engineering
+    engine/engineering/EngineeringModule.cpp
+)
+target_include_directories(engineering PUBLIC engine/engineering)
+
 # --- Artemis demo executable ---
 add_executable(artemis_demo
     examples/artemis_demo/main.cpp
 )
 target_link_libraries(artemis_demo PRIVATE neural led)
+
+# --- Overhead demo executable ---
+add_executable(overhead_demo
+    examples/overhead_demo/main.cpp
+)
+target_link_libraries(overhead_demo PRIVATE neural overhead engineering)

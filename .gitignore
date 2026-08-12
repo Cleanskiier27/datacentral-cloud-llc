@@ -43,6 +43,7 @@ htmlcov/
 tokens.json
 *.db
 
-# CodeQL
+# C++ build artifacts
+build/
 _codeql_build_dir/
 _codeql_detected_source_root
