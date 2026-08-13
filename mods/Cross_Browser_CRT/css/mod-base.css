@@ -1,0 +1,9 @@
+/* CRT Mod Base Styles - Applied to all pages when extension is active */
+/* These styles provide CSS-variable-based theming that works across all browsers */
+
+:root {
+    --crt-mod-accent: #00ff41;
+    --crt-mod-bg: #0d0d0d;
+    --crt-mod-text: #33ff33;
+    --crt-mod-glow: 0 0 10px rgba(0, 255, 65, 0.3);
+}

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  networkbuster:
+    build:
+      context: ..
+      dockerfile: networkbuster/Dockerfile
+    volumes:
+      - ..:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    # For GUI apps in Docker, you'd typically use a VNC sidecar or X11 forwarding.
+    # This setup is for composing the build/headless environment.
