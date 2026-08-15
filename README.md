@@ -1,210 +1,56 @@
-# datacentral-cloud-llc
-home of networkbuster
+# Vertex AI Studio Frontend App with Node.js Backend
 
-> **Licensing notice**: This repository includes a private commercial license draft at [`LICENSE_PRIVATE`](./LICENSE_PRIVATE) with distribution terms restricted to NASA, U.S. government entities, and SpaceX (including AI-related use constraints).
+This repository contains a frontend and a Node.js backend, designed to run together.
+The backend acts as a proxy, handling Google Cloud API calls.
 
-## Features
+This project is intended for demonstration and prototyping purposes only.
+It is not intended for use in a production environment.
 
-- **Personal Access Token Management**: Secure token generation, validation, and management system
-- **Multiple Build Types**: Root (full) and lightweight distributions available
-- **OS Utilities**: Comprehensive cross-platform operating system utilities
+## Prerequisites
 
-## Documentation
+To run this application locally, you need:
 
-- [Token Management Documentation](TOKEN_DOCS.md) - Detailed documentation on the Personal Access Token system
-- [Build Guide](BUILD_GUIDE.md) - Instructions for building root and lightweight distributions
-- [Download Guide](DOWNLOAD_GUIDE.md) - Guide for downloading and managing distributions
-- [OS Utilities Documentation](OS_UTILS_DOCS.md) - Detailed documentation on the OS Utilities module
+*   **[Google Cloud SDK / gcloud CLI](https://cloud.google.com/sdk/docs/install)**: Follow the instructions to install the SDK.
 
-## Getting Started
+*   **gcloud Initialization**:
+    *   Initialize the gcloud CLI:
+        ```bash
+        gcloud init
+        ```
+    *   Authenticate for Application Default Credentials (needed to call Google Cloud APIs):
+        ```bash
+        gcloud auth application-default login
+        ```
 
-See [TOKEN_DOCS.md](TOKEN_DOCS.md) for detailed documentation on the Personal Access Token system.
+*   **Node.js and npm**: Ensure you have Node.js and its package manager, `npm`, installed on your machine.
 
-See [BUILD_GUIDE.md](BUILD_GUIDE.md) for instructions on building NetworkBuster distributions.
+## Project Structure
 
-See [OS_UTILS_DOCS.md](OS_UTILS_DOCS.md) for detailed documentation on the OS Utilities module.
+The project is organized into two main directories:
 
 See [docs/README.md](docs/README.md) for the full documentation index (deployment, networking, reference, and feature guides).
 
 ## Running the Application
+*   `frontend/`: Contains the Frontend application code.
+*   `backend/`: Contains the Node.js/Express server code to proxy Google Cloud API calls.
 
-### `make launchpad`
+## Backend Environment Variables
 
-The `launchpad` command runs the full startup sequence (migrations → seed → start → post-start tasks) with `APP_URL` set to `https://networkbuster.net`:
+The `backend/.env.local` file is automatically generated when you download this application.
+It contains essential Google Cloud environment variables pre-configured based on your project settings at the time of download.
 
-```sh
-make launchpad
-```
+The variables set in `backend/.env.local` are:
+*   `API_BACKEND_PORT`: The port the backend API server listens on (e.g., `5000`).
+*   `API_PAYLOAD_MAX_SIZE`: The maximum size of the request payload accepted by the backend server (e.g., `5mb`).
+*   `GOOGLE_CLOUD_LOCATION`: The Google Cloud region associated with your project.
+*   `GOOGLE_CLOUD_PROJECT`: Your Google Cloud Project ID.
 
-This executes the following steps in order:
+**Note:** These variables are automatically populated during the download process.
+You can modify the values in `backend/.env.local` if you need to change them.
 
-| Step | Make target | Purpose |
-|------|-------------|---------|
-| 1 | `10-1` | Run database migrations |
-| 2 | `launch` | Seed initial data |
-| 3 | `ac` | Start the application |
-| 4 | `lift` | Run post-start tasks |
+## Installation and Running the App
 
-You can override `APP_URL` for a different environment:
+To install dependencies and run your Google Cloud Vertex AI Studio App locally, execute the following command:
 
-```sh
-APP_URL=https://staging.example.com make launchpad
-```
-
-## Quick Setup (Windows)
-
-Use the one-click script to prepare WSL, optionally install ArchWSL, and open the ASCII LED preview in a new window:
-
-```powershell
-.\scripts\quick-setup-arch-preview.ps1
-```
-
-Optional examples:
-
-```powershell
-.\scripts\quick-setup-arch-preview.ps1 -ArchBundlePath "C:\Downloads\ArchWSL.msixbundle"
-.\scripts\quick-setup-arch-preview.ps1 -Interactive
-.\scripts\quick-setup-arch-preview.ps1 -ForcePreviewRefresh
-.\scripts\quick-setup-arch-preview.ps1 -SkipWslSetup
-```
-
-Notes:
-- Run in PowerShell; the script auto-elevates for WSL/Appx setup unless `-NoElevation` is provided.
-- If Arch is not already installed, the script opens the ArchWSL releases page.
-- After Arch install, start it with `wsl -d Arch`.
-
-## Arch Linux Setup (Project)
-
-For native Arch Linux environments (including Arch on WSL), run:
-
-```sh
-make setup-arch
-```
-
-This installs Java 17, Maven, Python tooling, project dependencies, and configures the project SSL certificate trust chain.
-
-## Linux Support
-
-- **Arch Linux / Arch WSL**: `make setup-arch`
-- **Ubuntu / Debian / Kali**: `make setup-linux`
-
-### Arch Troubleshooting
-
-- **`pacman` keyring errors**
-	```sh
-	sudo pacman-key --init
-	sudo pacman-key --populate archlinux
-	sudo pacman -Syy
-	```
-
-- **Mirror / package download issues**
-	```sh
-	sudo pacman -S reflector
-	sudo reflector --country US --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
-	sudo pacman -Syy
-	```
-
-- **Certificate trust refresh**
-	```sh
-	sudo cp certs/unified_certificate.pem /etc/ca-certificates/trust-source/anchors/networkbuster.crt
-	sudo update-ca-trust
-	```
-
-- **WSL Arch fails to start (`Wsl/Service/E_UNEXPECTED`)**
-	Reboot Windows, then run:
-	```powershell
-	wsl -d Arch
-	wsl -l -v
-	```
-
-## Running the Application
-
-### `make launchpad`
-
-The `launchpad` command runs the full startup sequence (migrations → seed → start → post-start tasks) with `APP_URL` set to `https://networkbuster.net`:
-
-```sh
-make launchpad
-```
-
-This executes the following steps in order:
-
-| Step | Make target | Purpose |
-|------|-------------|---------|
-| 1 | `10-1` | Run database migrations |
-| 2 | `launch` | Seed initial data |
-| 3 | `ac` | Start the application |
-| 4 | `lift` | Run post-start tasks |
-
-You can override `APP_URL` for a different environment:
-
-```sh
-APP_URL=https://staging.example.com make launchpad
-```
-
-## Quick Setup (Windows)
-
-Use the one-click script to prepare WSL, optionally install ArchWSL, and open the ASCII LED preview in a new window:
-
-```powershell
-.\scripts\quick-setup-arch-preview.ps1
-```
-
-Optional examples:
-
-```powershell
-.\scripts\quick-setup-arch-preview.ps1 -ArchBundlePath "C:\Downloads\ArchWSL.msixbundle"
-.\scripts\quick-setup-arch-preview.ps1 -Interactive
-.\scripts\quick-setup-arch-preview.ps1 -ForcePreviewRefresh
-.\scripts\quick-setup-arch-preview.ps1 -SkipWslSetup
-```
-
-Notes:
-- Run in PowerShell; the script auto-elevates for WSL/Appx setup unless `-NoElevation` is provided.
-- If Arch is not already installed, the script opens the ArchWSL releases page.
-- After Arch install, start it with `wsl -d Arch`.
-
-## Arch Linux Setup (Project)
-
-For native Arch Linux environments (including Arch on WSL), run:
-
-```sh
-make setup-arch
-```
-
-This installs Java 17, Maven, Python tooling, project dependencies, and configures the project SSL certificate trust chain.
-
-## Linux Support
-
-- **Arch Linux / Arch WSL**: `make setup-arch`
-- **Ubuntu / Debian / Kali**: `make setup-linux`
-
-### Arch Troubleshooting
-
-- **`pacman` keyring errors**
-	```sh
-	sudo pacman-key --init
-	sudo pacman-key --populate archlinux
-	sudo pacman -Syy
-	```
-
-- **Mirror / package download issues**
-	```sh
-	sudo pacman -S reflector
-	sudo reflector --country US --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
-	sudo pacman -Syy
-	```
-
-- **Certificate trust refresh**
-	```sh
-	sudo cp certs/unified_certificate.pem /etc/ca-certificates/trust-source/anchors/networkbuster.crt
-	sudo update-ca-trust
-	```
-
-- **WSL Arch fails to start (`Wsl/Service/E_UNEXPECTED`)**
-	Reboot Windows, then run:
-	```powershell
-	wsl -d Arch
-	wsl -l -v
-	```
->>>>>>> origin/copilot/create-os
+```bash
+npm install && npm run dev

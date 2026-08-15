@@ -1,0 +1,113 @@
+2026-07-20 19:49:29.991 [info] [OnboardingStatus] Updating context key 'gDataCloud.alreadyOnboarded' to false
+2026-07-20 19:49:29.991 [info] Getting gcloud config internal...
+2026-07-20 19:49:29.991 [info] Checking for gcloud binary path...
+2026-07-20 19:49:29.991 [info] Executing: which gcloud
+2026-07-20 19:49:29.991 [info] Getting gcloud config internal...
+2026-07-20 19:49:29.991 [info] Checking for gcloud binary path...
+2026-07-20 19:49:29.991 [info] Executing: which gcloud
+2026-07-20 19:49:29.991 [info] Checking for gcloud binary path...
+2026-07-20 19:49:29.991 [info] Executing: which gcloud
+2026-07-20 19:49:29.991 [info] hasGcloud: true
+2026-07-20 19:49:29.991 [info] Syncing gcloud settings to extension
+2026-07-20 19:49:29.991 [info] hasGcloud: true
+2026-07-20 19:49:29.991 [info] Getting gcloud config internal...
+2026-07-20 19:49:29.991 [info] Executing: gcloud config config-helper --format json
+2026-07-20 19:49:29.991 [info] Executing: gcloud config config-helper --format json
+2026-07-20 19:49:29.991 [info] Executing: gcloud config config-helper --format json
+2026-07-20 19:49:29.991 [info] [OnboardingPlugin] Cloud Code extension or Cloud Shell/Workstations detected. Skipping automatic onboarding.
+2026-07-20 19:49:29.991 [info] Activating bigquery
+2026-07-20 19:49:29.991 [info] ConversationalAnalyticsPlugin activated
+2026-07-20 19:49:29.991 [info] ConversationalAnalyticsPlugin: activate finished
+2026-07-20 19:49:29.991 [info] Activating Databases
+2026-07-20 19:49:29.991 [info] Activating Catalog Feature
+2026-07-20 19:49:29.991 [info] Activating dataplex universal catalog
+2026-07-20 19:49:29.991 [info] Activating dataproc
+2026-07-20 19:49:29.991 [info] Activating spark resource tree
+2026-07-20 19:49:29.991 [info] SparkMonitorPlugin: Activating...
+2026-07-20 19:49:29.991 [info] SparkMonitorPlugin: State change - experiment: true, setting: true, overall: true
+2026-07-20 19:49:29.991 [info] [2026-07-20T19:49:29.703Z] Activating Agent Skill Installer
+2026-07-20 19:49:29.991 [info] [2026-07-20T19:49:29.717Z] appName: Code OSS for Cloud Shell, ideType: 6
+2026-07-20 19:49:29.991 [info] [2026-07-20T19:49:29.717Z] Profile antigravity-ide is NOT active
+2026-07-20 19:49:29.991 [info] [2026-07-20T19:49:29.717Z] Profile antigravity is NOT active
+2026-07-20 19:49:29.991 [info] [2026-07-20T19:49:29.717Z] Profile jetski is NOT active
+2026-07-20 19:49:29.991 [info] [2026-07-20T19:49:29.717Z] Profile cursor is NOT active
+2026-07-20 19:49:29.991 [info] [2026-07-20T19:49:29.717Z] Profile copilot is NOT active
+2026-07-20 19:49:29.991 [info] [2026-07-20T19:49:29.717Z] Profile gemini-code-assist is active
+2026-07-20 19:49:29.991 [info] MCP config plugin: MCP config key: mcpServers
+2026-07-20 19:49:30.033 [info] Installed static notebooks and visualization MCP servers configuration in /home/cleanskiier27/.gemini/settings.json
+2026-07-20 19:49:30.037 [info] MCP config plugin: ideType: 6
+2026-07-20 19:49:30.135 [info] [MCP Registry] Server 'notebooks' listening on IPC socket: /tmp/datacloud-mcp-notebooks-codeossforcloudshell.sock
+2026-07-20 19:49:32.752 [info] [MCP Registry] Server 'visualization' listening on IPC socket: /tmp/datacloud-mcp-visualization-codeossforcloudshell.sock
+2026-07-20 19:49:32.766 [info] MCP config plugin: MCP config key: mcpServers
+2026-07-20 19:49:32.858 [info] Checking if identities match...Fetching ADC account name...
+2026-07-20 19:49:33.003 [info] hasGcloud: true
+2026-07-20 19:49:33.180 [info] SparkMonitorPlugin: Wrote filter config file with value: true
+2026-07-20 19:49:33.406 [info] [2026-07-20T19:49:33.405Z] Checking skills for Gemini Code Assist in /home/cleanskiier27/.gemini/skills. Force=false
+2026-07-20 19:49:33.407 [info] [2026-07-20T19:49:33.407Z] No previous manifest found or it was invalid.
+2026-07-20 19:49:33.408 [info] [2026-07-20T19:49:33.408Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills
+2026-07-20 19:49:33.413 [info] [2026-07-20T19:49:33.412Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/accidental-data-loss-prevention
+2026-07-20 19:49:33.413 [info] [2026-07-20T19:49:33.413Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/bigquery-data-transfer-service
+2026-07-20 19:49:33.413 [info] [2026-07-20T19:49:33.413Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/building-data-apps
+2026-07-20 19:49:33.413 [info] [2026-07-20T19:49:33.413Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/data-autocleaning
+2026-07-20 19:49:33.413 [info] [2026-07-20T19:49:33.413Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/dataform-bigquery
+2026-07-20 19:49:33.413 [info] [2026-07-20T19:49:33.413Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/dbt-bigquery
+2026-07-20 19:49:33.413 [info] [2026-07-20T19:49:33.413Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/developing-with-bigquery
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.413Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/discovering-gcp-data-assets
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/federate-lakehouse-catalog
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/gcloud-auth-verification
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/gcp-composer-troubleshooting
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/gcp-data-pipelines
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/gcp-dataflow
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/gcp-pipeline-orchestration
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/gcp-pipeline-resource-provisioning
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/gcp-spark
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/managing-python-dependencies
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/ml-best-practices
+2026-07-20 19:49:33.414 [info] [2026-07-20T19:49:33.414Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/notebook-guidance
+2026-07-20 19:49:33.415 [info] [2026-07-20T19:49:33.415Z] Ensured destination directory exists: /home/cleanskiier27/.gemini/skills/skill-repair
+2026-07-20 19:49:33.434 [info] [2026-07-20T19:49:33.433Z] Copied skill accidental-data-loss-prevention to /home/cleanskiier27/.gemini/skills/accidental-data-loss-prevention
+2026-07-20 19:49:33.435 [info] [2026-07-20T19:49:33.435Z] Copied skill dbt-bigquery to /home/cleanskiier27/.gemini/skills/dbt-bigquery
+2026-07-20 19:49:33.435 [info] [2026-07-20T19:49:33.435Z] Copied skill dataform-bigquery to /home/cleanskiier27/.gemini/skills/dataform-bigquery
+2026-07-20 19:49:33.436 [info] [2026-07-20T19:49:33.436Z] Copied skill discovering-gcp-data-assets to /home/cleanskiier27/.gemini/skills/discovering-gcp-data-assets
+2026-07-20 19:49:33.436 [info] [2026-07-20T19:49:33.436Z] Copied skill federate-lakehouse-catalog to /home/cleanskiier27/.gemini/skills/federate-lakehouse-catalog
+2026-07-20 19:49:33.437 [info] [2026-07-20T19:49:33.437Z] Copied skill gcloud-auth-verification to /home/cleanskiier27/.gemini/skills/gcloud-auth-verification
+2026-07-20 19:49:33.437 [info] [2026-07-20T19:49:33.437Z] Copied skill gcp-composer-troubleshooting to /home/cleanskiier27/.gemini/skills/gcp-composer-troubleshooting
+2026-07-20 19:49:33.438 [info] [2026-07-20T19:49:33.438Z] Copied skill notebook-guidance to /home/cleanskiier27/.gemini/skills/notebook-guidance
+2026-07-20 19:49:33.439 [info] [2026-07-20T19:49:33.439Z] Copied skill skill-repair to /home/cleanskiier27/.gemini/skills/skill-repair
+2026-07-20 19:49:33.440 [info] [2026-07-20T19:49:33.440Z] Copied skill gcp-data-pipelines to /home/cleanskiier27/.gemini/skills/gcp-data-pipelines
+2026-07-20 19:49:33.440 [info] [2026-07-20T19:49:33.440Z] Copied skill managing-python-dependencies to /home/cleanskiier27/.gemini/skills/managing-python-dependencies
+2026-07-20 19:49:33.441 [info] [2026-07-20T19:49:33.441Z] Copied skill ml-best-practices to /home/cleanskiier27/.gemini/skills/ml-best-practices
+2026-07-20 19:49:33.448 [info] [2026-07-20T19:49:33.448Z] Copied skill bigquery-data-transfer-service to /home/cleanskiier27/.gemini/skills/bigquery-data-transfer-service
+2026-07-20 19:49:33.449 [info] [2026-07-20T19:49:33.449Z] Copied skill gcp-pipeline-resource-provisioning to /home/cleanskiier27/.gemini/skills/gcp-pipeline-resource-provisioning
+2026-07-20 19:49:33.450 [info] [2026-07-20T19:49:33.450Z] Copied skill data-autocleaning to /home/cleanskiier27/.gemini/skills/data-autocleaning
+2026-07-20 19:49:33.454 [info] [2026-07-20T19:49:33.454Z] Copied skill gcp-spark to /home/cleanskiier27/.gemini/skills/gcp-spark
+2026-07-20 19:49:33.461 [info] [2026-07-20T19:49:33.461Z] Copied skill gcp-pipeline-orchestration to /home/cleanskiier27/.gemini/skills/gcp-pipeline-orchestration
+2026-07-20 19:49:33.462 [info] [2026-07-20T19:49:33.462Z] Copied skill building-data-apps to /home/cleanskiier27/.gemini/skills/building-data-apps
+2026-07-20 19:49:33.462 [info] [2026-07-20T19:49:33.462Z] Copied skill gcp-dataflow to /home/cleanskiier27/.gemini/skills/gcp-dataflow
+2026-07-20 19:49:33.466 [info] [2026-07-20T19:49:33.466Z] Copied skill developing-with-bigquery to /home/cleanskiier27/.gemini/skills/developing-with-bigquery
+2026-07-20 19:49:33.467 [info] [2026-07-20T19:49:33.467Z] Finished copying skills to /home/cleanskiier27/.gemini/skills. Updated 20 skills.
+2026-07-20 19:49:33.471 [info] [2026-07-20T19:49:33.471Z] Installation completed. Manifest updated.
+2026-07-20 19:49:35.283 [info] Identity match check: {"gcloudAccountEmpty":false,"vscodeAccountEmpty":false,"gcloudAdcAccountEmpty":false,"gcloudAccountMatchesVscode":true,"gcloudAdcAccountMatchesVscode":true}
+2026-07-20 19:49:35.285 [info] gcloud version: 576.0.0, isCompatible: true
+2026-07-20 19:49:35.285 [info] Checking if logged in to gcloud...
+2026-07-20 19:49:35.285 [info] Getting gcloud config internal...
+2026-07-20 19:49:35.299 [info] Executing: gcloud config config-helper --format json
+2026-07-20 19:49:37.244 [info] Executing: gcloud auth application-default print-access-token
+2026-07-20 19:49:39.092 [info] Verified that user is logged in to gcloud CLI and ADC.
+2026-07-20 19:49:40.172 [info] hasGcloud: true
+2026-07-20 19:49:41.094 [info] MCP config plugin: ideType: 6
+2026-07-20 19:49:41.095 [info] SparkMonitorPlugin: State change - experiment: true, setting: true, overall: true
+2026-07-20 19:49:41.116 [info] MCP config plugin: MCP config key: mcpServers
+2026-07-20 19:49:41.340 [info] gcloud version: 576.0.0, isCompatible: true
+2026-07-20 19:49:41.340 [info] Checking if logged in to gcloud...
+2026-07-20 19:49:41.340 [info] Getting gcloud config internal...
+2026-07-20 19:49:41.353 [info] Executing: gcloud config config-helper --format json
+2026-07-20 19:49:41.372 [info] SparkMonitorPlugin: Wrote filter config file with value: true
+2026-07-20 19:49:51.996 [info] Deactivating bigquery
+2026-07-20 19:49:51.996 [info] Deactivating GCS
+2026-07-20 19:49:51.996 [info] Deactivating Databases
+2026-07-20 19:49:51.996 [info] Deactivating Catalog Feature
+2026-07-20 19:49:51.996 [info] Deactivating dataproc
+2026-07-20 19:49:51.996 [info] SparkMonitorPlugin: Deactivating...
+2026-07-20 19:49:51.996 [info] Deactivating settings
+2026-07-20 19:49:52.145 [info] Executing: gcloud auth application-default print-access-token

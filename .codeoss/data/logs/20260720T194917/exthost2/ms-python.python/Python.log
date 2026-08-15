@@ -1,0 +1,19 @@
+2026-07-20 19:49:58.311 [warning] Dir "/home/cleanskiier27/.pixi/envs" is not watchable (directory does not exist)
+2026-07-20 19:49:59.394 [info] Starting Environment refresh
+2026-07-20 19:49:59.537 [info] Skipping ActivatedEnv Detection:  process.env.VSCODE_CLI !== '1'
+2026-07-20 19:49:59.561 [info] > hatch env show --json
+2026-07-20 19:49:59.561 [info] cwd: .
+2026-07-20 19:49:59.615 [info] > conda info --json
+2026-07-20 19:49:59.620 [info] Python interpreter path: /bin/python
+2026-07-20 19:49:59.826 [info] Starting Environment refresh
+2026-07-20 19:50:00.000 [info] > /bin/python -I /google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/python_files/get_output_via_markers.py /google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/python_files/interpreterInfo.py
+2026-07-20 19:50:00.002 [info] Environments refresh paths discovered: 612 milliseconds
+2026-07-20 19:50:00.021 [info] Environments refresh paths discovered: 195 milliseconds
+2026-07-20 19:50:00.085 [info] Environments refresh finished (event): 695 milliseconds
+2026-07-20 19:50:00.085 [info] Environments refresh finished (event): 259 milliseconds
+2026-07-20 19:50:00.089 [info] Environment refresh took 700 milliseconds
+2026-07-20 19:50:00.092 [info] Environment refresh took 266 milliseconds
+2026-07-20 19:50:00.104 [info] > pyenv which python
+2026-07-20 19:50:00.104 [info] cwd: .
+2026-07-20 19:50:02.175 [info] Starting Jedi language server for cleanskiier27.
+2026-07-20 20:30:25.059 [error] Unable to find workspace for given file

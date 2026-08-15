@@ -1,0 +1,102 @@
+{
+  "mcpServers": {
+    "notebook": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "git+https://github.com/gemini-cli-extensions/data-agent-kit-starter-pack.git",
+        "--mode=notebook"
+      ],
+      "env": {}
+    },
+    "visualization": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "git+https://github.com/gemini-cli-extensions/data-agent-kit-starter-pack.git",
+        "--mode=visualization"
+      ],
+      "env": {}
+    },
+    "datacloud_dataproc_remote": {
+      "type": "http",
+      "url": "https://dataproc-${REGION}.googleapis.com/mcp",
+      "authProviderType": "google_credentials",
+      "headers": {
+        "User-Agent": "datacloud.code oss for cloud shell"
+      },
+      "oauth": {
+        "scopes": [
+          "https://www.googleapis.com/auth/dataproc"
+        ]
+      }
+    },
+    "datacloud_knowledge_catalog_remote": {
+      "type": "http",
+      "url": "https://dataplex.googleapis.com/mcp",
+      "authProviderType": "google_credentials",
+      "headers": {
+        "User-Agent": "datacloud.code oss for cloud shell"
+      },
+      "oauth": {
+        "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      }
+    },
+    "datacloud_bigquery_remote": {
+      "type": "http",
+      "url": "https://bigquery.googleapis.com/mcp",
+      "authProviderType": "google_credentials",
+      "headers": {
+        "User-Agent": "datacloud.code oss for cloud shell"
+      },
+      "oauth": {
+        "scopes": [
+          "https://www.googleapis.com/auth/bigquery",
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      }
+    },
+    "datacloud_spanner_remote": {
+      "type": "http",
+      "url": "https://spanner.googleapis.com/mcp",
+      "authProviderType": "google_credentials",
+      "headers": {
+        "User-Agent": "datacloud.code oss for cloud shell"
+      },
+      "oauth": {
+        "scopes": [
+          "https://www.googleapis.com/auth/spanner.admin",
+          "https://www.googleapis.com/auth/spanner.data"
+        ]
+      }
+    },
+    "datacloud_alloydb_remote": {
+      "type": "http",
+      "url": "https://alloydb.${REGION}.rep.googleapis.com/mcp",
+      "authProviderType": "google_credentials",
+      "headers": {
+        "User-Agent": "datacloud.code oss for cloud shell"
+      },
+      "oauth": {
+        "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      }
+    },
+    "datacloud_cloud-sql_remote": {
+      "type": "http",
+      "url": "https://sqladmin.googleapis.com/mcp",
+      "authProviderType": "google_credentials",
+      "headers": {
+        "User-Agent": "datacloud.code oss for cloud shell"
+      },
+      "oauth": {
+        "scopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      }
+    }
+  }
+}

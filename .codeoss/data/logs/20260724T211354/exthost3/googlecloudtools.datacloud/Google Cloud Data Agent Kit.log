@@ -1,0 +1,96 @@
+2026-07-24 21:27:50.675 [info] [OnboardingStatus] Updating context key 'gDataCloud.alreadyOnboarded' to true
+2026-07-24 21:27:50.675 [info] Getting gcloud config internal...
+2026-07-24 21:27:50.675 [info] Checking for gcloud binary path...
+2026-07-24 21:27:50.675 [info] Executing: which gcloud
+2026-07-24 21:27:50.675 [info] Getting gcloud config internal...
+2026-07-24 21:27:50.675 [info] Checking for gcloud binary path...
+2026-07-24 21:27:50.675 [info] Executing: which gcloud
+2026-07-24 21:27:50.675 [info] Checking for gcloud binary path...
+2026-07-24 21:27:50.675 [info] Executing: which gcloud
+2026-07-24 21:27:50.675 [info] Checking for gcloud binary path...
+2026-07-24 21:27:50.675 [info] Executing: which gcloud
+2026-07-24 21:27:50.675 [info] hasGcloud: true
+2026-07-24 21:27:50.675 [info] Executing: gcloud config config-helper --format json
+2026-07-24 21:27:50.675 [info] Executing: gcloud config config-helper --format json
+2026-07-24 21:27:50.675 [info] hasGcloud: true
+2026-07-24 21:27:50.876 [info] Activating bigquery
+2026-07-24 21:27:50.878 [info] ConversationalAnalyticsPlugin activated
+2026-07-24 21:27:50.878 [info] ConversationalAnalyticsPlugin: activate finished
+2026-07-24 21:27:50.878 [info] Activating Databases
+2026-07-24 21:27:50.878 [info] Activating Catalog Feature
+2026-07-24 21:27:50.878 [info] Activating dataplex universal catalog
+2026-07-24 21:27:50.878 [info] Activating dataproc
+2026-07-24 21:27:50.878 [info] Activating spark resource tree
+2026-07-24 21:27:50.879 [info] SparkMonitorPlugin: Activating...
+2026-07-24 21:27:50.879 [info] SparkMonitorPlugin: State change - experiment: true, setting: true, overall: true
+2026-07-24 21:27:50.882 [info] [2026-07-24T21:27:50.870Z] Activating Agent Skill Installer
+2026-07-24 21:27:50.883 [info] [2026-07-24T21:27:50.882Z] appName: Code OSS for Cloud Shell, ideType: 6
+2026-07-24 21:27:50.883 [info] [2026-07-24T21:27:50.882Z] Profile antigravity-ide is NOT active
+2026-07-24 21:27:50.883 [info] [2026-07-24T21:27:50.882Z] Profile antigravity is NOT active
+2026-07-24 21:27:50.883 [info] [2026-07-24T21:27:50.882Z] Profile jetski is NOT active
+2026-07-24 21:27:50.883 [info] [2026-07-24T21:27:50.882Z] Profile cursor is NOT active
+2026-07-24 21:27:50.883 [info] [2026-07-24T21:27:50.882Z] Profile copilot is NOT active
+2026-07-24 21:27:50.883 [info] [2026-07-24T21:27:50.882Z] Profile gemini-code-assist is active
+2026-07-24 21:27:50.942 [info] MCP config plugin: MCP config key: mcpServers
+2026-07-24 21:27:50.943 [info] MCP config plugin: ideType: 6
+2026-07-24 21:27:50.944 [info] MCP config plugin: MCP config key: mcpServers
+2026-07-24 21:27:50.974 [info] [MCP Registry] Server 'notebooks' listening on IPC socket: /tmp/datacloud-mcp-notebooks-codeossforcloudshell.sock
+2026-07-24 21:27:50.980 [info] [MCP Registry] Server 'visualization' listening on IPC socket: /tmp/datacloud-mcp-visualization-codeossforcloudshell.sock
+2026-07-24 21:27:51.064 [info] [2026-07-24T21:27:51.063Z] Checking skills for Gemini Code Assist in /home/cleanskiier27/.gemini/skills. Force=false
+2026-07-24 21:27:51.065 [info] [2026-07-24T21:27:51.065Z] Bundle checksum match. Skipping installation.
+2026-07-24 21:27:51.069 [info] SparkMonitorPlugin: Wrote filter config file with value: true
+2026-07-24 21:27:51.656 [info] gcloud version: 576.0.0, isCompatible: true
+2026-07-24 21:27:51.656 [info] Checking if logged in to gcloud...
+2026-07-24 21:27:51.656 [info] Getting gcloud config internal...
+2026-07-24 21:27:51.666 [info] Executing: gcloud config config-helper --format json
+2026-07-24 21:27:51.969 [error] Failed to get gcloud config: Error: Command gcloud failed with code 1: ERROR: (gcloud.config.config-helper) You do not currently have an active account selected.
+Please run:
+
+  $ gcloud auth login
+
+to obtain new credentials.
+
+If you have already logged in with a different account, run:
+
+  $ gcloud config set account ACCOUNT
+
+to select an already authenticated account to use.
+
+2026-07-24 21:27:52.263 [error] Failed to get gcloud config: Error: Command gcloud failed with code 1: ERROR: (gcloud.config.config-helper) You do not currently have an active account selected.
+Please run:
+
+  $ gcloud auth login
+
+to obtain new credentials.
+
+If you have already logged in with a different account, run:
+
+  $ gcloud config set account ACCOUNT
+
+to select an already authenticated account to use.
+
+2026-07-24 21:27:53.080 [error] Failed to get gcloud config: Error: Command gcloud failed with code 1: ERROR: (gcloud.config.config-helper) You do not currently have an active account selected.
+Please run:
+
+  $ gcloud auth login
+
+to obtain new credentials.
+
+If you have already logged in with a different account, run:
+
+  $ gcloud config set account ACCOUNT
+
+to select an already authenticated account to use.
+
+2026-07-24 21:27:53.080 [info] Internal config has no access token.
+2026-07-24 21:27:55.510 [error] Proactive checkAuthorization failed Error calling Cloud Shell Theia Authorization. unauthorized.
+2026-07-24 21:27:55.515 [info] MCP config plugin: ideType: 6
+2026-07-24 21:27:56.894 [info] MCP config plugin: MCP config key: mcpServers
+2026-07-24 21:29:03.115 [info] triggerGcloudAuthLogin called
+2026-07-24 22:01:54.881 [info] Deactivating bigquery
+2026-07-24 22:01:54.881 [info] Deactivating GCS
+2026-07-24 22:01:54.881 [info] Deactivating Databases
+2026-07-24 22:01:54.881 [info] Deactivating Catalog Feature
+2026-07-24 22:01:54.881 [info] Deactivating dataproc
+2026-07-24 22:01:54.881 [info] SparkMonitorPlugin: Deactivating...
+2026-07-24 22:01:54.881 [info] Deactivating settings

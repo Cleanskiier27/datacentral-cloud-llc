@@ -1,10 +1,8 @@
 {
-    "gitlens.ai.generateCommits.customInstructions": "navigate safest route forward pages and archive",
-    "python-envs.pythonProjects": [
-        {
-            "path": "usbnb-fresh",
-            "envManager": "ms-python.python:venv",
-            "packageManager": "ms-python.python:pip"
-        }
+    "files.exclude": {
+        "**/.*": true
+    },
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }

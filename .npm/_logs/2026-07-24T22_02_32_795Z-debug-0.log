@@ -1,0 +1,34 @@
+0 verbose cli /usr/local/nvm/versions/node/v24.16.0/bin/node /usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@12.0.1
+2 info using node@v24.16.0
+3 silly config load:file:/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/cleanskiier27/.npmrc
+5 silly config load:file:/usr/local/nvm/versions/node/v24.16.0/etc/npmrc
+6 verbose title npm exec git+https://github.com/gemini-cli-extensions/data-agent-kit-starter-pack.git --mode=visualization
+7 verbose argv "exec" "--yes" "--" "git+https://github.com/gemini-cli-extensions/data-agent-kit-starter-pack.git" "--mode=visualization"
+8 verbose logfile logs-max:10 dir:/home/cleanskiier27/.npm/_logs/2026-07-24T22_02_32_795Z-
+9 verbose logfile /home/cleanskiier27/.npm/_logs/2026-07-24T22_02_32_795Z-debug-0.log
+10 silly logfile start cleaning logs, removing 1 files
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 verbose stack Error: Fetching packages of type "git" have been disabled
+13 verbose stack     at canUse (/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/node_modules/pacote/lib/fetcher.js:485:5)
+13 verbose stack     at FetcherBase.get (/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/node_modules/pacote/lib/fetcher.js:498:7)
+13 verbose stack     at Object.manifest (/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/node_modules/pacote/lib/index.js:20:29)
+13 verbose stack     at getManifest (/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:28:35)
+13 verbose stack     at missingFromTree (/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:73:28)
+13 verbose stack     at /usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:199:38
+13 verbose stack     at Array.map (<anonymous>)
+13 verbose stack     at exec (/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/node_modules/libnpmexec/lib/index.js:197:30)
+13 verbose stack     at async Npm.exec (/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/lib/npm.js:194:9)
+13 verbose stack     at async module.exports (/usr/local/nvm/versions/node/v24.16.0/lib/node_modules/npm/lib/cli/entry.js:67:5)
+14 error code EALLOWGIT
+15 error Fetching packages of type "git" have been disabled
+16 error Refusing to fetch "git+https://github.com/gemini-cli-extensions/data-agent-kit-starter-pack.git"
+17 verbose cwd /home/cleanskiier27
+18 verbose os Linux 6.6.143+
+19 verbose node v24.16.0
+20 verbose npm  v12.0.1
+21 verbose exit 1
+22 verbose code 1
+23 error A complete log of this run can be found in: /home/cleanskiier27/.npm/_logs/2026-07-24T22_02_32_795Z-debug-0.log
