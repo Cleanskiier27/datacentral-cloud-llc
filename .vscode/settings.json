@@ -1,4 +1,13 @@
 {
+  "java.jdt.ls.java.home": "C:\\Users\\daypi\\.jdk\\jdk-25.0.2",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-25",
+      "path": "C:\\Users\\daypi\\.jdk\\jdk-25.0.2",
+      "default": true
+    }
+  ]
+}{
     "files.exclude": {
         "**/.*": true
     },
