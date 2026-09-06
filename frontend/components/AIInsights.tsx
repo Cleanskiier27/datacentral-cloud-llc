@@ -45,6 +45,11 @@ export default function AIInsights({ data, queries }: Props) {
       if (line.trim() === '') return <div key={i} className="h-3" />;
       return <p key={i} className="text-gray-800 mb-2">{line}</p>;
     });
+
+  const handleAnalyze = async () => {
+    setIsLoading(true);
+    setInsights("Analysis feature coming soon. This will provide AI-powered insights about your search performance.");
+    setTimeout(() => setIsLoading(false), 1000);
   };
 
   return (
@@ -55,6 +60,9 @@ export default function AIInsights({ data, queries }: Props) {
             <Sparkles className="w-5 h-5 text-indigo-600" />
           </div>
           <h2 className="text-lg font-semibold text-indigo-900">Gemini SEO Insights</h2>
+            <span className="text-2xl">✨</span>
+          </div>
+          <h2 className="text-lg font-semibold text-indigo-900">AI Insights</h2>
         </div>
         {!insights && !isLoading && (
           <button
@@ -62,6 +70,9 @@ export default function AIInsights({ data, queries }: Props) {
             className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm flex items-center space-x-2"
           >
             <span>Analyze Performance</span>
+            className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm"
+          >
+            Analyze Performance
           </button>
         )}
       </div>
@@ -77,6 +88,8 @@ export default function AIInsights({ data, queries }: Props) {
         <div className="flex items-center space-x-2 text-red-600 bg-red-50 p-4 rounded-lg border border-red-100">
           <AlertCircle className="w-5 h-5 flex-shrink-0" />
           <span className="text-sm">{error}</span>
+          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-600"></div>
+          <span className="text-sm font-medium">Analyzing search data...</span>
         </div>
       )}
 
@@ -94,6 +107,7 @@ export default function AIInsights({ data, queries }: Props) {
               <span>Refresh Insights</span>
             </button>
           </div>
+          <p className="text-sm text-gray-800">{insights}</p>
         </div>
       )}
     </div>
