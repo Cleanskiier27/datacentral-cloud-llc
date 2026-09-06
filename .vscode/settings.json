@@ -1,10 +1,17 @@
 {
-    "gitlens.ai.generateCommits.customInstructions": "navigate safest route forward pages and archive",
-    "python-envs.pythonProjects": [
-        {
-            "path": "usbnb-fresh",
-            "envManager": "ms-python.python:venv",
-            "packageManager": "ms-python.python:pip"
-        }
+  "java.jdt.ls.java.home": "C:\\Users\\daypi\\.jdk\\jdk-25.0.2",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-25",
+      "path": "C:\\Users\\daypi\\.jdk\\jdk-25.0.2",
+      "default": true
+    }
+  ]
+}{
+    "files.exclude": {
+        "**/.*": true
+    },
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }

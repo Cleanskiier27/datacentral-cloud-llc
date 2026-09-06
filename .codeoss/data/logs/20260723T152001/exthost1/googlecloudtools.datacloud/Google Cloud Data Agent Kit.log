@@ -1,0 +1,53 @@
+2026-07-23 15:20:10.643 [info] [OnboardingStatus] Updating context key 'gDataCloud.alreadyOnboarded' to true
+2026-07-23 15:20:10.643 [info] Getting gcloud config internal...
+2026-07-23 15:20:10.643 [info] Checking for gcloud binary path...
+2026-07-23 15:20:10.643 [info] Executing: which gcloud
+2026-07-23 15:20:10.643 [info] Getting gcloud config internal...
+2026-07-23 15:20:10.643 [info] Checking for gcloud binary path...
+2026-07-23 15:20:10.643 [info] Executing: which gcloud
+2026-07-23 15:20:10.643 [info] Checking for gcloud binary path...
+2026-07-23 15:20:10.643 [info] Executing: which gcloud
+2026-07-23 15:20:10.643 [info] Checking for gcloud binary path...
+2026-07-23 15:20:10.643 [info] Executing: which gcloud
+2026-07-23 15:20:10.643 [info] hasGcloud: true
+2026-07-23 15:20:10.643 [info] hasGcloud: true
+2026-07-23 15:20:10.643 [info] Executing: gcloud config config-helper --format json
+2026-07-23 15:20:10.643 [info] Executing: gcloud config config-helper --format json
+2026-07-23 15:20:10.902 [info] Activating bigquery
+2026-07-23 15:20:10.903 [info] ConversationalAnalyticsPlugin activated
+2026-07-23 15:20:10.904 [info] ConversationalAnalyticsPlugin: activate finished
+2026-07-23 15:20:10.904 [info] Activating Databases
+2026-07-23 15:20:10.904 [info] Activating Catalog Feature
+2026-07-23 15:20:10.904 [info] Activating dataplex universal catalog
+2026-07-23 15:20:10.904 [info] Activating dataproc
+2026-07-23 15:20:10.904 [info] Activating spark resource tree
+2026-07-23 15:20:10.904 [info] SparkMonitorPlugin: Activating...
+2026-07-23 15:20:10.904 [info] SparkMonitorPlugin: State change - experiment: true, setting: true, overall: true
+2026-07-23 15:20:10.908 [info] [2026-07-23T15:20:10.897Z] Activating Agent Skill Installer
+2026-07-23 15:20:10.910 [info] [2026-07-23T15:20:10.908Z] appName: Code OSS for Cloud Shell, ideType: 6
+2026-07-23 15:20:10.910 [info] [2026-07-23T15:20:10.908Z] Profile antigravity-ide is NOT active
+2026-07-23 15:20:10.910 [info] [2026-07-23T15:20:10.908Z] Profile antigravity is NOT active
+2026-07-23 15:20:10.910 [info] [2026-07-23T15:20:10.908Z] Profile jetski is NOT active
+2026-07-23 15:20:10.910 [info] [2026-07-23T15:20:10.908Z] Profile cursor is NOT active
+2026-07-23 15:20:10.910 [info] [2026-07-23T15:20:10.908Z] Profile copilot is NOT active
+2026-07-23 15:20:10.910 [info] [2026-07-23T15:20:10.908Z] Profile gemini-code-assist is active
+2026-07-23 15:20:10.952 [info] MCP config plugin: MCP config key: mcpServers
+2026-07-23 15:20:10.953 [info] MCP config plugin: ideType: 6
+2026-07-23 15:20:10.954 [info] MCP config plugin: MCP config key: mcpServers
+2026-07-23 15:20:11.082 [info] [2026-07-23T15:20:11.081Z] Checking skills for Gemini Code Assist in /home/cleanskiier27/.gemini/skills. Force=false
+2026-07-23 15:20:11.117 [info] [MCP Registry] Server 'notebooks' listening on IPC socket: /tmp/datacloud-mcp-notebooks-codeossforcloudshell.sock
+2026-07-23 15:20:11.123 [info] [MCP Registry] Server 'visualization' listening on IPC socket: /tmp/datacloud-mcp-visualization-codeossforcloudshell.sock
+2026-07-23 15:20:11.128 [info] [2026-07-23T15:20:11.128Z] Bundle checksum match. Skipping installation.
+2026-07-23 15:20:11.190 [info] SparkMonitorPlugin: Wrote filter config file with value: true
+2026-07-23 15:20:11.562 [info] gcloud version: 576.0.0, isCompatible: true
+2026-07-23 15:20:11.562 [info] Checking if logged in to gcloud...
+2026-07-23 15:20:11.562 [info] Getting gcloud config internal...
+2026-07-23 15:20:11.566 [info] Executing: gcloud config config-helper --format json
+2026-07-23 15:20:25.595 [error] Timeout getting gcloud config internal: TimeoutError: Command gcloud timed out after 15000ms
+2026-07-23 15:20:25.595 [error] Error in sentinel change stream: TimeoutError: Command gcloud timed out after 15000ms
+2026-07-23 15:20:25.600 [error] Timeout getting gcloud config internal: TimeoutError: Command gcloud timed out after 15000ms
+2026-07-23 15:20:26.567 [error] Timeout getting gcloud config internal: TimeoutError: Command gcloud timed out after 15000ms
+2026-07-23 15:20:26.567 [error] Timeout during gcloud auth and installation check: TimeoutError: Command gcloud timed out after 15000ms
+2026-07-23 15:20:31.278 [error] Proactive checkAuthorization failed Error calling Cloud Shell Theia Authorization. unauthorized.
+2026-07-23 15:20:31.282 [info] MCP config plugin: ideType: 6
+2026-07-23 15:20:32.724 [info] MCP config plugin: MCP config key: mcpServers

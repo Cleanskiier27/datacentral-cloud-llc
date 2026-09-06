@@ -1,0 +1,5 @@
+2026-07-23 15:20:11.702 [info] Skipping ActivatedEnv Detection:  process.env.VSCODE_CLI !== '1'
+2026-07-23 15:20:11.720 [info] > conda info --json
+2026-07-23 15:20:11.756 [info] > /bin/python -I /google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/python_files/get_output_via_markers.py /google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/python_files/interpreterInfo.py
+2026-07-23 15:20:11.810 [info] Python interpreter path: /bin/python
+2026-07-23 15:20:13.369 [info] Starting Jedi language server for default.

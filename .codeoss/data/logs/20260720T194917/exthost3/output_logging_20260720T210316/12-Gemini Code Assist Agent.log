@@ -1,0 +1,986 @@
+Starting background process...
+Background process started with PID 5702
+[INFO] 2026-07-20 21:03:37.290 PM -- [CoderAgentExecutor] Overriding workspace path to: /home/cleanskiier27
+[ERROR] 2026-07-20 21:03:37.298 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[ERROR] 2026-07-20 21:03:37.299 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[INFO] 2026-07-20 21:03:37.300 PM -- Loading extension: vertex (version: 0.2.0)
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ripgrep is not available. Falling back to GrepTool.
+Loading extension: vertex
+[MCP error] Error during discovery for MCP server 'VertexMcpServer': spawn ${extensionPath}/run.sh ENOENT Error: spawn ${extensionPath}/run.sh ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawn ${extensionPath}/run.sh',
+  path: '${extensionPath}/run.sh',
+  spawnargs: []
+}
+Hook registry initialized with 0 hook entries
+Hook system initialized successfully
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+[MCP error] Error during discovery for MCP server 'visualization': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'notebook': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'datacloud_dataproc_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND dataproc-${region}.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'dataproc-${region}.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_knowledge_catalog_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_knowledge_catalog_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_spanner_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_spanner_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_bigquery_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_bigquery_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+[MCP error] Error during discovery for MCP server 'datacloud_alloydb_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND alloydb.${region}.rep.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'alloydb.${region}.rep.googleapis.com'
+  }
+}
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+Registering notification handlers for server 'datacloud_cloud-sql_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_cloud-sql_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+Scheduling MCP context refresh...
+Executing MCP context refresh...
+MCP context refresh already in progress, queuing trailing execution.
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+Coalescing burst refresh requests (300ms delay)...
+Executing MCP context refresh...
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+[STARTUP] StartupProfiler.flush() called with 1 phases
+[STARTUP] Recording metric for phase: discover_tools duration: 3272.0548529999996
+[INFO] 2026-07-20 21:03:46.141 PM -- [Config] Using CCPA Auth:
+[INFO] 2026-07-20 21:03:46.142 PM -- [Config] Attempting COMPUTE_ADC first.
+Failed to load credentials from /home/cleanskiier27/.gemini/oauth_creds.json: ENOENT: no such file or directory, open '/home/cleanskiier27/.gemini/oauth_creds.json'
+Attempting to authenticate via metadata server application default credentials.
+Authentication successful.
+[INFO] 2026-07-20 21:03:46.490 PM -- [Config] COMPUTE_ADC failed or not available: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google
+[ERROR] 2026-07-20 21:03:46.490 PM -- [CoreAgent] Error during startup: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)
+{
+  "exitCode": 41,
+  "name": "FatalAuthenticationError",
+  "stack": "FatalAuthenticationError: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)\n    at refreshAuthentication (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426215:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async loadConfig (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426138:3)\n    at async createApp (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428675:21)\n    at async main (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428809:24)"
+}
+
+Process exited with code 1 and signal null
+Process exited unexpectedly, attempting to restart in 5 seconds...
+Starting background process...
+Background process started with PID 5925
+[INFO] 2026-07-20 21:03:52.625 PM -- [CoderAgentExecutor] Overriding workspace path to: /home/cleanskiier27
+[ERROR] 2026-07-20 21:03:52.634 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[ERROR] 2026-07-20 21:03:52.636 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[INFO] 2026-07-20 21:03:52.637 PM -- Loading extension: vertex (version: 0.2.0)
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ripgrep is not available. Falling back to GrepTool.
+Loading extension: vertex
+[MCP error] Error during discovery for MCP server 'VertexMcpServer': spawn ${extensionPath}/run.sh ENOENT Error: spawn ${extensionPath}/run.sh ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawn ${extensionPath}/run.sh',
+  path: '${extensionPath}/run.sh',
+  spawnargs: []
+}
+Hook registry initialized with 0 hook entries
+Hook system initialized successfully
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+[MCP error] Error during discovery for MCP server 'notebook': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'visualization': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'datacloud_alloydb_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND alloydb.${region}.rep.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'alloydb.${region}.rep.googleapis.com'
+  }
+}
+[MCP error] Error during discovery for MCP server 'datacloud_dataproc_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND dataproc-${region}.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'dataproc-${region}.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_cloud-sql_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_cloud-sql_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+Registering notification handlers for server 'datacloud_bigquery_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_bigquery_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_knowledge_catalog_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_knowledge_catalog_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_spanner_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_spanner_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+Scheduling MCP context refresh...
+Executing MCP context refresh...
+MCP context refresh already in progress, queuing trailing execution.
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+Coalescing burst refresh requests (300ms delay)...
+Executing MCP context refresh...
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+[STARTUP] StartupProfiler.flush() called with 1 phases
+[STARTUP] Recording metric for phase: discover_tools duration: 3048.624271
+[INFO] 2026-07-20 21:04:00.796 PM -- [Config] Using CCPA Auth:
+[INFO] 2026-07-20 21:04:00.796 PM -- [Config] Attempting COMPUTE_ADC first.
+Failed to load credentials from /home/cleanskiier27/.gemini/oauth_creds.json: ENOENT: no such file or directory, open '/home/cleanskiier27/.gemini/oauth_creds.json'
+Attempting to authenticate via metadata server application default credentials.
+Authentication successful.
+[INFO] 2026-07-20 21:04:01.200 PM -- [Config] COMPUTE_ADC failed or not available: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google
+[ERROR] 2026-07-20 21:04:01.200 PM -- [CoreAgent] Error during startup: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)
+{
+  "exitCode": 41,
+  "name": "FatalAuthenticationError",
+  "stack": "FatalAuthenticationError: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)\n    at refreshAuthentication (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426215:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async loadConfig (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426138:3)\n    at async createApp (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428675:21)\n    at async main (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428809:24)"
+}
+
+Process exited with code 1 and signal null
+Process exited unexpectedly, attempting to restart in 10 seconds...
+Starting background process...
+Background process started with PID 6090
+[INFO] 2026-07-20 21:04:12.273 PM -- [CoderAgentExecutor] Overriding workspace path to: /home/cleanskiier27
+[ERROR] 2026-07-20 21:04:12.279 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[ERROR] 2026-07-20 21:04:12.280 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[INFO] 2026-07-20 21:04:12.281 PM -- Loading extension: vertex (version: 0.2.0)
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ripgrep is not available. Falling back to GrepTool.
+Loading extension: vertex
+[MCP error] Error during discovery for MCP server 'VertexMcpServer': spawn ${extensionPath}/run.sh ENOENT Error: spawn ${extensionPath}/run.sh ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawn ${extensionPath}/run.sh',
+  path: '${extensionPath}/run.sh',
+  spawnargs: []
+}
+Hook registry initialized with 0 hook entries
+Hook system initialized successfully
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+[MCP error] Error during discovery for MCP server 'notebook': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at Socket.<anonymous> (node:internal/child_process:456:11)
+    at Socket.emit (node:events:519:28)
+    at Pipe.<anonymous> (node:net:346:12) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'visualization': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'datacloud_dataproc_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND dataproc-${region}.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'dataproc-${region}.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_bigquery_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_bigquery_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_spanner_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_spanner_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+[MCP error] Error during discovery for MCP server 'datacloud_alloydb_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND alloydb.${region}.rep.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'alloydb.${region}.rep.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_knowledge_catalog_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_knowledge_catalog_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_cloud-sql_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_cloud-sql_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Scheduling MCP context refresh...
+Executing MCP context refresh...
+MCP context refresh already in progress, queuing trailing execution.
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+Coalescing burst refresh requests (300ms delay)...
+Executing MCP context refresh...
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+[STARTUP] StartupProfiler.flush() called with 1 phases
+[STARTUP] Recording metric for phase: discover_tools duration: 3052.966399
+[INFO] 2026-07-20 21:04:20.905 PM -- [Config] Using CCPA Auth:
+[INFO] 2026-07-20 21:04:20.906 PM -- [Config] Attempting COMPUTE_ADC first.
+Failed to load credentials from /home/cleanskiier27/.gemini/oauth_creds.json: ENOENT: no such file or directory, open '/home/cleanskiier27/.gemini/oauth_creds.json'
+Attempting to authenticate via metadata server application default credentials.
+Authentication successful.
+[INFO] 2026-07-20 21:04:21.266 PM -- [Config] COMPUTE_ADC failed or not available: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google
+[ERROR] 2026-07-20 21:04:21.266 PM -- [CoreAgent] Error during startup: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)
+{
+  "exitCode": 41,
+  "name": "FatalAuthenticationError",
+  "stack": "FatalAuthenticationError: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)\n    at refreshAuthentication (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426215:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async loadConfig (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426138:3)\n    at async createApp (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428675:21)\n    at async main (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428809:24)"
+}
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+
+Process exited with code 1 and signal null
+Process exited unexpectedly, attempting to restart in 20 seconds...
+Starting background process...
+Background process started with PID 6216
+[INFO] 2026-07-20 21:04:45.257 PM -- [CoderAgentExecutor] Overriding workspace path to: /home/cleanskiier27
+[ERROR] 2026-07-20 21:04:45.264 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[ERROR] 2026-07-20 21:04:45.265 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[INFO] 2026-07-20 21:04:45.265 PM -- Loading extension: vertex (version: 0.2.0)
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ripgrep is not available. Falling back to GrepTool.
+Loading extension: vertex
+[MCP error] Error during discovery for MCP server 'VertexMcpServer': spawn ${extensionPath}/run.sh ENOENT Error: spawn ${extensionPath}/run.sh ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawn ${extensionPath}/run.sh',
+  path: '${extensionPath}/run.sh',
+  spawnargs: []
+}
+Hook registry initialized with 0 hook entries
+Hook system initialized successfully
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+[MCP error] Error during discovery for MCP server 'visualization': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'notebook': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'datacloud_dataproc_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND dataproc-${region}.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'dataproc-${region}.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_bigquery_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_bigquery_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+[MCP error] Error during discovery for MCP server 'datacloud_alloydb_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND alloydb.${region}.rep.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'alloydb.${region}.rep.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_knowledge_catalog_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_knowledge_catalog_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_cloud-sql_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_cloud-sql_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_spanner_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_spanner_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+Scheduling MCP context refresh...
+Executing MCP context refresh...
+MCP context refresh already in progress, queuing trailing execution.
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+Coalescing burst refresh requests (300ms delay)...
+Executing MCP context refresh...
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+[STARTUP] StartupProfiler.flush() called with 1 phases
+[STARTUP] Recording metric for phase: discover_tools duration: 3028.6902689999997
+[INFO] 2026-07-20 21:04:53.331 PM -- [Config] Using CCPA Auth:
+[INFO] 2026-07-20 21:04:53.332 PM -- [Config] Attempting COMPUTE_ADC first.
+Failed to load credentials from /home/cleanskiier27/.gemini/oauth_creds.json: ENOENT: no such file or directory, open '/home/cleanskiier27/.gemini/oauth_creds.json'
+Attempting to authenticate via metadata server application default credentials.
+Authentication successful.
+[INFO] 2026-07-20 21:04:53.681 PM -- [Config] COMPUTE_ADC failed or not available: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google
+[ERROR] 2026-07-20 21:04:53.682 PM -- [CoreAgent] Error during startup: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)
+{
+  "exitCode": 41,
+  "name": "FatalAuthenticationError",
+  "stack": "FatalAuthenticationError: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)\n    at refreshAuthentication (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426215:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async loadConfig (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426138:3)\n    at async createApp (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428675:21)\n    at async main (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428809:24)"
+}
+
+Process exited with code 1 and signal null
+Process exited unexpectedly, attempting to restart in 40 seconds...
+Starting background process...
+Background process started with PID 6342
+[INFO] 2026-07-20 21:05:34.843 PM -- [CoderAgentExecutor] Overriding workspace path to: /home/cleanskiier27
+[ERROR] 2026-07-20 21:05:34.860 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[ERROR] 2026-07-20 21:05:34.861 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[INFO] 2026-07-20 21:05:34.862 PM -- Loading extension: vertex (version: 0.2.0)
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ripgrep is not available. Falling back to GrepTool.
+Loading extension: vertex
+[MCP error] Error during discovery for MCP server 'VertexMcpServer': spawn ${extensionPath}/run.sh ENOENT Error: spawn ${extensionPath}/run.sh ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawn ${extensionPath}/run.sh',
+  path: '${extensionPath}/run.sh',
+  spawnargs: []
+}
+Hook registry initialized with 0 hook entries
+Hook system initialized successfully
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+[MCP error] Error during discovery for MCP server 'notebook': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'visualization': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'datacloud_alloydb_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND alloydb.${region}.rep.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'alloydb.${region}.rep.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_spanner_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_spanner_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_cloud-sql_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_cloud-sql_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+[MCP error] Error during discovery for MCP server 'datacloud_dataproc_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND dataproc-${region}.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'dataproc-${region}.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_knowledge_catalog_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_knowledge_catalog_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_bigquery_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_bigquery_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+Scheduling MCP context refresh...
+Executing MCP context refresh...
+MCP context refresh already in progress, queuing trailing execution.
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+Coalescing burst refresh requests (300ms delay)...
+Executing MCP context refresh...
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+[STARTUP] StartupProfiler.flush() called with 1 phases
+[STARTUP] Recording metric for phase: discover_tools duration: 3111.803039
+[INFO] 2026-07-20 21:05:43.156 PM -- [Config] Using CCPA Auth:
+[INFO] 2026-07-20 21:05:43.157 PM -- [Config] Attempting COMPUTE_ADC first.
+Failed to load credentials from /home/cleanskiier27/.gemini/oauth_creds.json: ENOENT: no such file or directory, open '/home/cleanskiier27/.gemini/oauth_creds.json'
+Attempting to authenticate via metadata server application default credentials.
+Authentication successful.
+[INFO] 2026-07-20 21:05:43.576 PM -- [Config] COMPUTE_ADC failed or not available: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google
+[ERROR] 2026-07-20 21:05:43.576 PM -- [CoreAgent] Error during startup: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)
+{
+  "exitCode": 41,
+  "name": "FatalAuthenticationError",
+  "stack": "FatalAuthenticationError: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)\n    at refreshAuthentication (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426215:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async loadConfig (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426138:3)\n    at async createApp (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428675:21)\n    at async main (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428809:24)"
+}
+
+Process exited with code 1 and signal null
+Process exited unexpectedly, attempting to restart in 80 seconds...
+Starting background process...
+Background process started with PID 6468
+[INFO] 2026-07-20 21:07:04.783 PM -- [CoderAgentExecutor] Overriding workspace path to: /home/cleanskiier27
+[ERROR] 2026-07-20 21:07:04.790 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[ERROR] 2026-07-20 21:07:04.790 PM -- Warning: unexpected file /home/cleanskiier27/.gemini/extensions/extension-enablement.json in extensions directory.
+[INFO] 2026-07-20 21:07:04.791 PM -- Loading extension: vertex (version: 0.2.0)
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ignore file not found: /home/cleanskiier27/.geminiignore, continue without it.
+Ignore file not found: /home/cleanskiier27/.aiexclude, continue without it.
+Ripgrep is not available. Falling back to GrepTool.
+Loading extension: vertex
+[MCP error] Error during discovery for MCP server 'VertexMcpServer': spawn ${extensionPath}/run.sh ENOENT Error: spawn ${extensionPath}/run.sh ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawn ${extensionPath}/run.sh',
+  path: '${extensionPath}/run.sh',
+  spawnargs: []
+}
+Hook registry initialized with 0 hook entries
+Hook system initialized successfully
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+[MCP error] Error during discovery for MCP server 'visualization': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+[MCP error] Error during discovery for MCP server 'notebook': MCP error -32000: Connection closed _McpError: MCP error -32000: Connection closed
+    at _McpError.fromError (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297181:16)
+    at Client._onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297350:33)
+    at _transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:297320:16)
+    at McpComplianceTransport.transport.onclose (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395368:25)
+    at ChildProcess.<anonymous> (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:300072:76)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: -32000,
+  data: undefined
+}
+Registering notification handlers for server 'datacloud_knowledge_catalog_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_knowledge_catalog_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_cloud-sql_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_cloud-sql_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+[MCP error] Error during discovery for MCP server 'datacloud_alloydb_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND alloydb.${region}.rep.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'alloydb.${region}.rep.googleapis.com'
+  }
+}
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/PasswordValidationPolicy/properties/passwordChangeInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/retentionInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/SqlServerAuditConfig/properties/uploadInterval"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/Metadata/properties/sqlStatementExecutionTime"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/properties/passwordExpirationDuration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+unknown format "google-duration" ignored in schema at path "#/$defs/AcquireSsrsLeaseContext/properties/duration"
+[MCP error] Error during discovery for MCP server 'datacloud_dataproc_remote': fetch failed TypeError: fetch failed
+    at node:internal/deps/undici/undici:14900:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async fetch (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:396473:12)
+    at async StreamableHTTPClientTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:299307:28)
+    at async McpComplianceTransport.send (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:395385:9) {
+  [cause]: Error: getaddrinfo ENOTFOUND dataproc-${region}.googleapis.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'dataproc-${region}.googleapis.com'
+  }
+}
+Registering notification handlers for server 'datacloud_bigquery_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_bigquery_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+Registering notification handlers for server 'datacloud_spanner_remote'. Capabilities: { tools: { listChanged: false } }
+Server 'datacloud_spanner_remote' has tools but did not declare 'listChanged' capability. Listening anyway for robustness...
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/properties/lastModifiedTime"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/$defs/MaterializedViewDefinition/properties/refreshIntervalMs"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/properties/numRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedBytes"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/estimatedRows"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+unknown format "uint64" ignored in schema at path "#/$defs/Streamingbuffer/properties/oldestEntryTime"
+Scheduling MCP context refresh...
+Executing MCP context refresh...
+MCP context refresh already in progress, queuing trailing execution.
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+Coalescing burst refresh requests (300ms delay)...
+Executing MCP context refresh...
+[DEBUG] [MemoryDiscovery] Loading environment memory for trusted root: /home/cleanskiier27 (Stopping at git root: /home/cleanskiier27)
+[DEBUG] [MemoryDiscovery] Starting upward search from /home/cleanskiier27 stopping at /home/cleanskiier27
+[DEBUG] [MemoryDiscovery] deduplication: keeping /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (dev: 2065, ino: 45)
+[DEBUG] [MemoryDiscovery] Successfully read and processed imports: /home/cleanskiier27/.gemini/extensions/vertex/GEMINI.md (Length: 55458)
+MCP context refresh complete.
+[STARTUP] StartupProfiler.flush() called with 1 phases
+[STARTUP] Recording metric for phase: discover_tools duration: 3187.4817660000003
+[INFO] 2026-07-20 21:07:13.208 PM -- [Config] Using CCPA Auth:
+[INFO] 2026-07-20 21:07:13.209 PM -- [Config] Attempting COMPUTE_ADC first.
+Failed to load credentials from /home/cleanskiier27/.gemini/oauth_creds.json: ENOENT: no such file or directory, open '/home/cleanskiier27/.gemini/oauth_creds.json'
+Attempting to authenticate via metadata server application default credentials.
+Authentication successful.
+[INFO] 2026-07-20 21:07:13.596 PM -- [Config] COMPUTE_ADC failed or not available: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google
+[ERROR] 2026-07-20 21:07:13.597 PM -- [CoreAgent] Error during startup: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)
+{
+  "exitCode": 41,
+  "name": "FatalAuthenticationError",
+  "stack": "FatalAuthenticationError: COMPUTE_ADC failed: This client is no longer supported for Gemini Code Assist for individuals. To continue using Gemini, please migrate to the Antigravity suite of products: https://antigravity.google. (LOGIN_WITH_GOOGLE fallback skipped due to headless mode. Run in an interactive terminal to use OAuth.)\n    at refreshAuthentication (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426215:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async loadConfig (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:426138:3)\n    at async createApp (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428675:21)\n    at async main (file:///google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs:428809:24)"
+}
+
+Process exited with code 1 and signal null
+Agent process failed to restart after 5 consecutive crashes

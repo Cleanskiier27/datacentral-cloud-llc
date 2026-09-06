@@ -1,0 +1,45 @@
+name: Deploy Moonbase Alpha GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/moonbase-alpha/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Pages
+        id: pages
+        continue-on-error: true
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Skip deploy when Pages is unavailable
+        if: steps.pages.outcome != 'success'
+        run: echo "::warning::GitHub Pages is not enabled for this repository and could not be auto-enabled with GITHUB_TOKEN. Skipping deployment."
+      - name: Upload artifact
+        if: steps.pages.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/moonbase-alpha
+      - name: Deploy to GitHub Pages
+        id: deployment
+        if: steps.pages.outcome == 'success'
+        uses: actions/deploy-pages@v4

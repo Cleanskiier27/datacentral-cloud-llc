@@ -4,6 +4,9 @@
 (function () {
     "use strict";
 
+    // Cross-browser WebExtension API shim (see background.js for rationale).
+    const browserAPI = typeof browser !== "undefined" ? browser : chrome;
+
     let state = {
         shaderEnabled: false,
         shaderType: "crt",
@@ -413,7 +416,7 @@
     }
 
     // Listen for state changes from background/popup
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    browserAPI.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (message.type === "STATE_CHANGED") {
             state = message.state;
             applyState();
@@ -424,8 +427,8 @@
     });
 
     // Load initial state
-    chrome.runtime.sendMessage({ type: "GET_STATE" }, (response) => {
-        if (chrome.runtime.lastError || !response) return;
+    browserAPI.runtime.sendMessage({ type: "GET_STATE" }, (response) => {
+        if (browserAPI.runtime.lastError || !response) return;
         state = response;
         applyState();
     });

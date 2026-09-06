@@ -1,0 +1,44 @@
+2026-07-24 21:50:32.030 [info] Extension host with pid 5735 started
+2026-07-24 21:50:32.030 [error] Error: EEXIST: file already exists, open '/home/cleanskiier27/.codeoss/data/User/workspaceStorage/12d43996/vscode.lock'
+2026-07-24 21:50:32.031 [info] Lock '/home/cleanskiier27/.codeoss/data/User/workspaceStorage/12d43996/vscode.lock': Could not acquire lock, checking if the file is stale.
+2026-07-24 21:50:32.031 [info] Lock '/home/cleanskiier27/.codeoss/data/User/workspaceStorage/12d43996/vscode.lock': The pid 2150 appears to be gone.
+2026-07-24 21:50:32.031 [info] Lock '/home/cleanskiier27/.codeoss/data/User/workspaceStorage/12d43996/vscode.lock': Deleting a stale lock.
+2026-07-24 21:50:32.052 [info] Lock '/home/cleanskiier27/.codeoss/data/User/workspaceStorage/12d43996/vscode.lock': Lock acquired.
+2026-07-24 21:50:32.249 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-07-24 21:50:32.250 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-07-24 21:50:32.250 [info] ExtensionService#_doActivateExtension google.geminicodeassist, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-07-24 21:50:32.251 [info] ExtensionService#_doActivateExtension ms-toolsai.jupyter, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-07-24 21:50:33.356 [info] ExtensionService#_doActivateExtension ms-python.python, startup: false, activationEvent: 'api', root cause: ms-toolsai.jupyter
+2026-07-24 21:50:33.619 [info] ExtensionService#_doActivateExtension googlecloudtools.datacloud, startup: false, activationEvent: 'onLanguage:Log', root cause: googlecloudtools.cloudcode
+2026-07-24 21:50:34.458 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-07-24 21:50:34.620 [info] ExtensionService#_doActivateExtension google.cloud-shell, startup: false, activationEvent: 'onCommand:cloudshell.isAuthorized'
+2026-07-24 21:50:34.710 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-07-24 21:50:34.710 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-07-24 21:50:35.044 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-07-24 21:50:35.045 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-07-24 21:50:35.045 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-07-24 21:50:35.436 [info] Eager extensions activated
+2026-07-24 21:50:35.437 [info] ExtensionService#_doActivateExtension EditorConfig.EditorConfig, startup: false, activationEvent: 'onStartupFinished'
+2026-07-24 21:50:35.438 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2026-07-24 21:50:35.438 [info] ExtensionService#_doActivateExtension google.gemini-cli-vscode-ide-companion, startup: false, activationEvent: 'onStartupFinished'
+2026-07-24 21:50:35.439 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-07-24 21:50:36.653 [info] ExtensionService#_doActivateExtension googlecloudtools.cloudcode, startup: false, activationEvent: 'onLanguage:Log'
+2026-07-24 21:50:41.736 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-07-24 21:56:11.829 [info] Extension host terminating: received terminate message from renderer
+2026-07-24 21:56:11.830 [info] Lock '/home/cleanskiier27/.codeoss/data/User/workspaceStorage/12d43996/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+2026-07-24 21:56:11.993 [error] Error: Channel has been closed
+    at n (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:123:3001)
+    at Object.info (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:123:3346)
+    at T.info (/google/devshell/editor/code-oss-for-cloud-shell/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:45267)
+    at ChildProcess.<anonymous> (/google/devshell/editor/code-oss-for-cloud-shell/extensions/json-language-features/client/dist/node/jsonClientMain.js:2:606637)
+    at ChildProcess.emit (node:events:519:28)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:293:12)
+2026-07-24 21:56:12.016 [error] Error: Channel has been closed
+    at r (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:123:2616)
+    at Object.appendLine (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:123:2755)
+    at P.logOutputMessage (/google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/out/client/extension.js:2:2100381)
+    at P.error (/google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/out/client/extension.js:2:2100272)
+    at ChildProcess.<anonymous> (/google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/out/client/extension.js:2:2317508)
+    at ChildProcess.emit (node:events:519:28)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:293:12)
+2026-07-24 21:56:12.031 [info] Extension host with pid 5735 exiting with code 0
