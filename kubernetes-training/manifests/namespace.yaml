@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: networkbuster
+  labels:
+    name: networkbuster
+    environment: training
+    managed-by: networkbuster-system
+  annotations:
+    description: "NetworkBuster Cloud Management System"
+    security-pin: "drew2"
+    owner: "NetworkBuster"
+    created-by: "networkbuster-admin"
