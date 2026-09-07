@@ -6,7 +6,7 @@ import sys
 
 def test_sample_fetch(tmp_path):
     outdir = tmp_path / "training_out"
-    cmd = [sys.executable, "../training/fetch_xkcd.py", "--start", "401", "--sample", "5", "--chunk-size", "2", "--outdir", str(outdir)]
+    cmd = [sys.executable, "training/fetch_xkcd.py", "--start", "401", "--sample", "5", "--chunk-size", "2", "--outdir", str(outdir)]
     # run from repo root
     cwd = os.path.dirname(__file__) + "/.."
     r = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)

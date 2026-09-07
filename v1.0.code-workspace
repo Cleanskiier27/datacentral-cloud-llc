@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "C:/Windows/System32/WindowsPowerShell/v1.0"
+		},
+		{
+			"name": "kernals",
+			"path": "C:/Users/ceans/.vs-kubernetes/tools/kernals"
+		},
+		{
+			"name": "Dependabot",
+			"path": "C:/Users/ceans/vscode-remote-wsl/stable/c9d77990917f3102ada88be140d28b038d1dd7c7/Dependabot"
+		}
+	],
+	"settings": {}
+}

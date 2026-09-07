@@ -16,6 +16,11 @@ from typing import Optional, Dict, List
 class TokenManager:
     """Manages personal access tokens with secure storage and validation."""
     
+    STANDARD_SCOPES = {
+        "purchasing_economy": "Access to purchasing and procurement economic systems",
+        "space_economy_tax_metrics": "Access to space-based economic and tax-related metrics"
+    }
+    
     def __init__(self, storage_path: str = "tokens.json"):
         """
         Initialize the TokenManager.
@@ -197,3 +202,27 @@ class TokenManager:
                 continue
         
         return None
+
+    def get_standard_scopes(self) -> Dict[str, str]:
+        """
+        Get the standard predefined scopes.
+        
+        Returns:
+            Dictionary of standard scopes and their descriptions
+        """
+        return self.STANDARD_SCOPES
+
+    def has_scope(self, token: str, scope: str) -> bool:
+        """
+        Check if a valid token has a specific scope.
+        
+        Args:
+            token: The token to check
+            scope: The scope to look for
+            
+        Returns:
+            True if token is valid and has the scope, False otherwise
+        """
+        scopes = self.get_token_scopes(token)
+        return scopes is not None and scope in scopes
+

@@ -144,6 +144,36 @@ class TestTokenManager(unittest.TestCase):
         
         self.assertIn("already exists", str(context.exception))
 
+    def test_standard_scopes(self):
+        """Test standard predefined scopes."""
+        standard_scopes = self.manager.get_standard_scopes()
+        self.assertIn("purchasing_economy", standard_scopes)
+        self.assertIn("space_economy_tax_metrics", standard_scopes)
+        self.assertEqual(
+            standard_scopes["purchasing_economy"],
+            "Access to purchasing and procurement economic systems"
+        )
+        self.assertEqual(
+            standard_scopes["space_economy_tax_metrics"],
+            "Access to space-based economic and tax-related metrics"
+        )
+
+    def test_has_scope(self):
+        """Test checking if a token has a specific scope."""
+        token = self.manager.generate_token(
+            "economy-token",
+            scopes=["purchasing_economy"]
+        )
+        
+        # Should have the requested scope
+        self.assertTrue(self.manager.has_scope(token, "purchasing_economy"))
+        
+        # Should not have a scope that wasn't requested
+        self.assertFalse(self.manager.has_scope(token, "space_economy_tax_metrics"))
+        
+        # Invalid token should return False
+        self.assertFalse(self.manager.has_scope("pat_invalid", "purchasing_economy"))
+
 
 if __name__ == "__main__":
     unittest.main()

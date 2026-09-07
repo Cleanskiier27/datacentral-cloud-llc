@@ -1,0 +1,5 @@
+[user]
+	name = drew2
+	email = pirateday2@networkbuster.net
+[credential "https://*.*.sourcemanager.dev"]
+	helper = gcloud.sh

@@ -1,0 +1,38 @@
+2026-07-24 21:20:58.806 [info] [main] Log level: Info
+2026-07-24 21:20:58.806 [info] [main] Validating found git in: "git"
+2026-07-24 21:20:58.806 [info] [main] Using git "2.43.0" from "git"
+2026-07-24 21:20:58.806 [info] [Model][doInitialScan] Initial repository scan started
+2026-07-24 21:20:58.806 [info] [Model][doInitialScan] Initial repository scan completed - repositories (0), closed repositories (0), parent repositories (0), unsafe repositories (0)
+2026-07-24 21:50:13.958 [info] > git rev-parse --show-toplevel [5ms]
+2026-07-24 21:50:13.973 [info] > git rev-parse --git-dir --git-common-dir --show-superproject-working-tree [4ms]
+2026-07-24 21:50:14.074 [info] [Model][openRepository] Opened repository (path): /home/cleanskiier27
+2026-07-24 21:50:14.074 [info] [Model][openRepository] Opened repository (real path): /home/cleanskiier27
+2026-07-24 21:50:14.074 [info] [Model][openRepository] Opened repository (kind): repository
+2026-07-24 21:50:14.102 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [5ms]
+2026-07-24 21:50:14.103 [info] > git config --get commit.template [18ms]
+2026-07-24 21:50:14.127 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [2ms]
+2026-07-24 21:50:14.157 [info] > git status -z -uall [42ms]
+2026-07-24 21:50:14.187 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [14ms]
+2026-07-24 21:50:14.196 [info] > git config --get commit.template [10ms]
+2026-07-24 21:50:14.196 [info] > git config --get --local branch.main.vscode-merge-base [2ms]
+2026-07-24 21:50:14.196 [warning] [Git][config] git config failed: Failed to execute git
+2026-07-24 21:50:14.211 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [2ms]
+2026-07-24 21:50:14.230 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [1ms]
+2026-07-24 21:50:14.238 [info] > git status -z -uall [22ms]
+2026-07-24 21:50:14.267 [info] > git reflog main --grep-reflog=branch: Created from *. [65ms]
+2026-07-24 21:50:14.276 [info] > git symbolic-ref --short refs/remotes/origin/HEAD [3ms]
+2026-07-24 21:50:14.276 [info] fatal: ref refs/remotes/origin/HEAD is not a symbolic ref
+2026-07-24 21:50:14.276 [warning] [Repository][getDefaultBranch] Failed to get default branch details: Failed to execute git.
+2026-07-24 21:50:14.481 [info] > git check-ignore -v -z --stdin [2ms]
+2026-07-24 21:50:14.569 [info] > git show --textconv :.codeoss/data/logs/20260720T194917/exthost2/vscode.git/Git.log [18ms]
+2026-07-24 21:50:14.570 [info] > git ls-files --stage -- .codeoss/data/logs/20260720T194917/exthost2/vscode.git/Git.log [5ms]
+2026-07-24 21:50:14.583 [info] > git cat-file -s 75a637973417b0738cb3f43e3440c19945814a0f [2ms]
+2026-07-24 21:50:14.668 [info] > git check-ignore -v -z --stdin [2ms]
+2026-07-24 21:50:14.849 [info] > git check-ignore -v -z --stdin [2ms]
+2026-07-24 21:50:15.157 [info] > git fetch [1084ms]
+2026-07-24 21:50:15.157 [info] remote: Missing permission "securesourcemanager.instances.access". Please visit https://cloud.google.com/secure-source-manager/docs/access-control for help troubleshooting IAM issues.
+fatal: unable to access 'https://main-instance-159147526315-git.us-central1.sourcemanager.dev/source-root-7076/source-root.git/': The requested URL returned error: 403
+2026-07-24 21:50:15.180 [info] > git config --get commit.template [12ms]
+2026-07-24 21:50:15.180 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [1ms]
+2026-07-24 21:50:15.205 [info] > git for-each-ref --sort -committerdate --format %(refname)%00%(objectname)%00%(*objectname) [2ms]
+2026-07-24 21:50:15.207 [info] > git status -z -uall [16ms]

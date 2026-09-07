@@ -2,11 +2,13 @@
 
 A secure personal access token (PAT) management system for networkbuster.
 
+> Windows quick-start: for one-command setup of WSL + ArchWSL prep and ASCII LED preview, see the "Quick Setup (Windows)" section in [README.md](README.md).
+
 ## Features
 
 - **Secure Token Generation**: Generates cryptographically secure tokens using Python's `secrets` module
 - **Token Validation**: Validates tokens with expiry checking
-- **Scope-Based Permissions**: Supports fine-grained permission scopes
+- **Scope-Based Permissions**: Supports fine-grained permission scopes including standard scopes (`purchasing_economy`, `space_economy_tax_metrics`)
 - **Token Expiry**: Optional expiration dates for enhanced security
 - **Secure Storage**: Tokens are hashed using SHA-256 before storage
 - **CLI Interface**: Easy-to-use command-line tool
@@ -57,6 +59,12 @@ python token_cli.py validate pat_xxxxxxxxxxxxxxxxxxxxx
 python token_cli.py list
 ```
 
+#### List Standard Scopes
+
+```bash
+python token_cli.py scopes
+```
+
 #### Revoke a Token
 
 ```bash
@@ -95,6 +103,15 @@ for token_info in tokens:
 # Revoke a token
 manager.revoke_token("my-app-token")
 ```
+
+## Standard Scopes
+
+The system defines the following standard scopes:
+
+| Scope | Description |
+| --- | --- |
+| `purchasing_economy` | Access to purchasing and procurement economic systems |
+| `space_economy_tax_metrics` | Access to space-based economic and tax-related metrics |
 
 ## Security Considerations
 
