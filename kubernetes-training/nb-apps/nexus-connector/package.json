@@ -1,0 +1,16 @@
+{
+  "name": "nexus-connector",
+  "version": "1.0.0",
+  "description": "Node.js API gateway that bridges NetworkBuster services to the Python Nexus Engine",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "express": "^4.19.2"
+  }
+}
