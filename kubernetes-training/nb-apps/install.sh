@@ -32,6 +32,7 @@ docker compose version >/dev/null 2>&1 || { echo -e "${RED}Docker Compose v2 plu
 cd "$SCRIPT_DIR"
 if docker buildx version >/dev/null 2>&1; then
     echo -e "${GREEN}Building multi-arch images (linux/amd64, linux/arm64)...${NC}"
+    for svc in services-manager robot-recycling sudo-manager status-dashboard token-manager license-manager nexus-engine nexus-connector interstellar-wealth; do
     for svc in services-manager robot-recycling sudo-manager status-dashboard token-manager license-manager nexus-engine nexus-connector; do
         docker buildx build --platform linux/amd64,linux/arm64 -t "nb-$svc:latest" "./$svc" --load || \
             docker buildx build --platform "$PLATFORM" -t "nb-$svc:latest" "./$svc" --load

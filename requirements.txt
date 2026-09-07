@@ -2,6 +2,14 @@
 cryptography>=42.0.4
 bcrypt>=4.0.0
 
+# Hardware Security (Master Key Integration)
+yubikey-manager>=5.0.0
+fido2>=1.1.0
+networkbustersetup>=1.0.0
+
+# System Utilities
+psutil>=5.9.0
+
 # Google Cloud Platform
 google-cloud-storage>=2.10.0
 google-cloud-aiplatform>=1.40.0

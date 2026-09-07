@@ -24,6 +24,7 @@ const SIBLING_SERVICES = {
   'token-manager': 8083,
   'license-manager': 8084,
   'nexus-engine': 8086,
+  'interstellar-wealth': 8087,
 };
 
 function requirePin(req, res, next) {

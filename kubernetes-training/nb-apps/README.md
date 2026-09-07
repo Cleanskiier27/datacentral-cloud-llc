@@ -120,6 +120,14 @@ Python backend that performs the processing work requested through the Nexus Con
 - `/api/stats` - Jobs processed since startup
 - `/health` - Health check
 
+### 9. Interstellar Wealth (Port 8087)
+Stub balance/transaction ledger service. Holds placeholder in-memory data only — no real payment processing, trading, or market data integration.
+
+**Endpoints:**
+- `/api/balance` - Current mock balance
+- `/api/transactions` - List or record a transaction (`POST` requires `X-Security-Pin` header)
+- `/health` - Health check
+
 ## 🐳 Docker Usage
 
 ### Build All Containers
@@ -185,6 +193,7 @@ When running with Docker Compose:
 - **License Manager**: http://localhost:8084
 - **Nexus Connector**: http://localhost:8085
 - **Nexus Engine**: http://localhost:8086
+- **Interstellar Wealth**: http://localhost:8087
 - **Nginx Proxy**: http://localhost
 
 ## 🔧 Configuration
@@ -215,6 +224,7 @@ scrape_configs:
         - 'license-manager:8084'
         - 'nexus-connector:8085'
         - 'nexus-engine:8086'
+        - 'interstellar-wealth:8087'
 ```
 
 ## 🔐 Security Notes
