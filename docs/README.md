@@ -34,6 +34,7 @@ Documentation for `datacentral-cloud-llc`, organized by topic.
 - [MOBILE_SETUP.md](MOBILE_SETUP.md)
 - [matrix-arch-linux.md](matrix-arch-linux.md)
 - [moonbase-alpha/](moonbase-alpha/)
+- [moonbase-alpha/MOONBASE_ALPHA_PULLS_AND_RELEASE.md](moonbase-alpha/MOONBASE_ALPHA_PULLS_AND_RELEASE.md)
 
 ---
 Most of these documents were migrated from `Cleanskiier27/DOCS-m2m`, with
