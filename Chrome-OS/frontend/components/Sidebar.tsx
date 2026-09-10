@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, BarChart2, Layers, Settings, Globe, Link as LinkIcon } from 'lucide-react';
+import { Search, BarChart2, Layers, Settings, Globe, Link as LinkIcon, DollarSign } from 'lucide-react';
 
 interface Props {
   activeTab: string;
@@ -9,6 +9,7 @@ interface Props {
 export default function Sidebar({ activeTab, setActiveTab }: Props) {
   const navItems = [
     { id: 'performance', icon: BarChart2, label: 'Performance' },
+    { id: 'income', icon: DollarSign, label: 'Income Tracker' },
     { id: 'inspection', icon: Search, label: 'URL Inspection' },
     { id: 'pages', icon: Layers, label: 'Pages' },
     { id: 'sitemaps', icon: Globe, label: 'Sitemaps' },

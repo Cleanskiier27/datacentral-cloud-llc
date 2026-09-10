@@ -21,9 +21,13 @@ A cross-browser compatible version of the Opera GX CRT shader mod. This extensio
 4. Select the `Cross_Browser_CRT` folder (this directory)
 5. The extension icon will appear in your toolbar
 
-### Firefox (with minor adjustments)
+### Firefox
 
-1. Change `"service_worker"` in manifest.json to `"scripts": ["background.js"]` under a `"background"` key
+1. Copy `manifest.firefox.json` over `manifest.json` (or rename it) — this
+   swaps the Chromium `service_worker` background key for the
+   `scripts`-based background page Firefox expects, and adds the
+   `browser_specific_settings.gecko` block Firefox requires for MV3
+   add-ons. No other files need to change.
 2. Open `about:debugging#/runtime/this-firefox`
 3. Click **Load Temporary Add-on**
 4. Select the `manifest.json` file
@@ -49,11 +53,26 @@ The extension injects a full-viewport `<canvas>` overlay with WebGL shaders that
 ### Keyboard Sounds (Web Audio API)
 Uses the Web Audio API oscillator to generate synthetic mechanical keyboard sounds with no audio files needed.
 
+### Cross-Browser API Compatibility
+`background.js`, `content.js`, and `popup.js` each alias the WebExtension
+entry point at load time:
+
+```js
+const browserAPI = typeof browser !== "undefined" ? browser : chrome;
+```
+
+Chromium-based browsers only expose `chrome.*`, while Firefox exposes the
+promise-based `browser.*` namespace (which also accepts the same
+callback-style calls used here). Using `browserAPI` throughout means the
+extension logic runs unmodified on both browser families — only the
+manifest's background declaration differs (see Installation above).
+
 ### Architecture
 ```
 Cross_Browser_CRT/
-├── manifest.json          # Extension manifest (Manifest V3)
-├── background.js          # Service worker for state management
+├── manifest.json          # Extension manifest (Manifest V3, Chromium)
+├── manifest.firefox.json  # Extension manifest variant for Firefox
+├── background.js          # Service worker / background script for state management
 ├── content.js             # Content script (shaders + sounds)
 ├── css/
 │   └── mod-base.css       # Base CSS variables
@@ -85,7 +104,7 @@ Cross_Browser_CRT/
 | Brave | ✅ Fully supported |
 | Opera / Opera GX | ✅ Fully supported |
 | Vivaldi | ✅ Fully supported |
-| Firefox | ⚠️ Requires manifest adjustment (see above) |
+| Firefox | ✅ Fully supported (use `manifest.firefox.json`, see Installation) |
 
 ## License
 

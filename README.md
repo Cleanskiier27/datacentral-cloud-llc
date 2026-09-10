@@ -28,6 +28,9 @@ To run this application locally, you need:
 
 The project is organized into two main directories:
 
+See [docs/README.md](docs/README.md) for the full documentation index (deployment, networking, reference, and feature guides).
+
+## Running the Application
 *   `frontend/`: Contains the Frontend application code.
 *   `backend/`: Contains the Node.js/Express server code to proxy Google Cloud API calls.
 

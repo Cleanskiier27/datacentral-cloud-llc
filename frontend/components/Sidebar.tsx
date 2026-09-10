@@ -1,14 +1,20 @@
 import React from 'react';
-import { Search, BarChart2, Layers, Settings, Globe, Link as LinkIcon } from 'lucide-react';
+import { Search, BarChart2, Layers, Settings, Globe, Link as LinkIcon, DollarSign } from 'lucide-react';
 
-export default function Sidebar() {
+interface Props {
+  activeView?: string;
+  onViewChange?: (view: string) => void;
+}
+
+export default function Sidebar({ activeView = 'performance', onViewChange }: Props) {
   const navItems = [
-    { icon: BarChart2, label: 'Performance', active: true },
-    { icon: Search, label: 'URL Inspection', active: false },
-    { icon: Layers, label: 'Pages', active: false },
-    { icon: Globe, label: 'Sitemaps', active: false },
-    { icon: LinkIcon, label: 'Links', active: false },
-    { icon: Settings, label: 'Settings', active: false },
+    { id: 'performance', icon: BarChart2, label: 'Performance' },
+    { id: 'income', icon: DollarSign, label: 'Income Tracker' },
+    { id: 'inspection', icon: Search, label: 'URL Inspection' },
+    { id: 'pages', icon: Layers, label: 'Pages' },
+    { id: 'sitemaps', icon: Globe, label: 'Sitemaps' },
+    { id: 'links', icon: LinkIcon, label: 'Links' },
+    { id: 'settings', icon: Settings, label: 'Settings' },
   ];
 
   return (
@@ -25,25 +31,33 @@ export default function Sidebar() {
           Overview
         </div>
         <nav className="space-y-1">
-          {navItems.map((item, idx) => {
+          {navItems.map((item) => {
             const Icon = item.icon;
+            const isActive = activeView === item.id;
             return (
-              <a
-                key={idx}
-                href="#"
-                className={`flex items-center space-x-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors
-                  ${item.active
+              <button
+                key={item.id}
+                onClick={() => onViewChange?.(item.id)}
+                className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors
+                  ${isActive
                     ? 'bg-blue-50 text-blue-700'
                     : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }
                 `}
               >
-                <Icon className={`w-4 h-4 ${item.active ? 'text-blue-700' : 'text-gray-400'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-blue-700' : 'text-gray-400'}`} />
                 <span>{item.label}</span>
-              </a>
+              </button>
             );
           })}
         </nav>
+
+export default function Sidebar() {
+  return (
+    <aside className="w-64 bg-white border-r border-gray-200 p-6 hidden md:block">
+      <div className="mb-8">
+        <h1 className="text-xl font-bold text-gray-900">Search Console</h1>
+        <p className="text-xs text-gray-500 mt-1">AI Dashboard</p>
       </div>
     </aside>
   );

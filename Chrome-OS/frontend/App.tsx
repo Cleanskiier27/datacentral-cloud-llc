@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import PerformanceView from './components/PerformanceView';
+import IncomeTracker from './components/IncomeTracker';
 import UrlInspection from './components/UrlInspection';
 import Pages from './components/Pages';
 import Sitemaps from './components/Sitemaps';
@@ -13,6 +14,11 @@ export default function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'performance': return <PerformanceView />;
+      case 'income': return (
+        <div className="max-w-6xl mx-auto p-6 md:p-8 space-y-8">
+          <IncomeTracker />
+        </div>
+      );
       case 'inspection': return <UrlInspection />;
       case 'pages': return <Pages />;
       case 'sitemaps': return <Sitemaps />;

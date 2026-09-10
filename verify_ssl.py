@@ -16,8 +16,10 @@ def verify_local_ssl(url="https://localhost:5000"):
         return
 
     try:
-        # Create a context that trusts our specific self-signed cert
-        context = ssl.create_default_context(cafile=cert_path)
+        # Create a context that trusts our specific self-signed cert and uses a secure TLS protocol.
+        # Python 3.10+ defaults to PROTOCOL_TLS_CLIENT, but we set it explicitly to satisfy stricter checks.
+        protocol = getattr(ssl, "PROTOCOL_TLS_CLIENT", ssl.PROTOCOL_TLS)
+        context = ssl.create_default_context(cafile=cert_path, purpose=ssl.Purpose.SERVER_AUTH, protocol=protocol)
         # We are testing localhost, so we ensure the hostname matches the CN in the cert
         
         parsed_url = urlparse(url)

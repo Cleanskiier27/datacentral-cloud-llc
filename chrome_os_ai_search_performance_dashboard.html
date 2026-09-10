@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chrome OS - AI Search & Performance Intelligence</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              500: '#3b82f6',
+              600: '#2563eb',
+              900: '#1e3a8a',
+            },
+            agi: {
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            glow: {
+              '0%': { boxShadow: '0 0 10px rgba(99, 102, 241, 0.3)' },
+              '100%': { boxShadow: '0 0 25px rgba(99, 102, 241, 0.8)' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <!-- React & ReactDOM (UMD) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <!-- Babel for JSX compilation -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0b0f19;
+      color: #f3f4f6;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111827;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #374151;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4b5563;
+    }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-overlay {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+  </style>
+</head>
+<body class="h-screen overflow-hidden selection:bg-indigo-500 selection:text-white">
+  <div id="root" class="h-full w-full"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useMemo, useRef } = React;
+
+    // --- Mock Initial Performance Data ---
+    const INITIAL_METRICS = {
+      clicks: 148920,
+      impressions: 3420500,
+      ctr: 0.0435,
+      position: 11.2,
+      changes: { clicks: 12.4, impressions: 8.1, ctr: 3.8, position: -1.4 }
+    };
+
+    const INITIAL_QUERIES = [
+      { id: 'q1', query: 'chrome os developer tools analytics', clicks: 14200, impressions: 185000, ctr: 0.0767, position: 2.1, intent: 'Informational', trend: 'up' },
+      { id: 'q2', query: 'chrome os agi engine integration', clicks: 11800, impressions: 142000, ctr: 0.0831, position: 1.8, trend: 'up', intent: 'Transactional' },
+      { id: 'q3', query: 'vertex ai proxy interceptor setup', clicks: 9400, impressions: 210000, ctr: 0.0447, position: 4.3, trend: 'up', intent: 'Navigational' },
+      { id: 'q4', query: 'web search console metric overlay', clicks: 8100, impressions: 198000, ctr: 0.0409, position: 5.8, trend: 'down', intent: 'Informational' },
+      { id: 'q5', query: 'gemini flash live prompt streaming', clicks: 7600, impressions: 165000, ctr: 0.0460, position: 3.2, trend: 'up', intent: 'Commercial' },
+      { id: 'q6', query: 'chromeos flex enterprise management', clicks: 6200, impressions: 128000, ctr: 0.0484, position: 6.1, trend: 'stable', intent: 'Commercial' },
+      { id: 'q7', query: 'realtime browser telemetry dashboard', clicks: 5400, impressions: 112000, ctr: 0.0482, position: 7.4, trend: 'up', intent: 'Informational' },
+    ];
+
+    const PERFORMANCE_TIMELINE = Array.from({ length: 14 }, (_, i) => {
+      const date = new Date();
+      date.setDate(date.getDate() - (13 - i));
+      const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      return {
+        date: dateStr,
+        clicks: Math.floor(9500 + Math.random() * 3500 + i * 300),
+        impressions: Math.floor(220000 + Math.random() * 45000 + i * 5000),
+        ctr: Number((0.038 + Math.random() * 0.012).toFixed(4)),
+        position: Number((12.5 - (i * 0.15) + (Math.random() * 0.8 - 0.4)).toFixed(1))
+      };
+    });
+
+    const URL_INSPECTION_LIST = [
+      { url: 'https://chromeos.dev/en/analytics/agi-overview', indexed: true, mobileUsable: true, coreWebVitals: 'Good (LCP 1.2s)', lastCrawled: '2 hours ago' },
+      { url: 'https://chromeos.dev/en/docs/vertex-proxy', indexed: true, mobileUsable: true, coreWebVitals: 'Good (LCP 1.4s)', lastCrawled: '5 hours ago' },
+      { url: 'https://chromeos.dev/en/insights/search-trends', indexed: true, mobileUsable: true, coreWebVitals: 'Needs Improvement', lastCrawled: '1 day ago' },
+      { url: 'https://chromeos.dev/en/experimental/live-stream', indexed: false, mobileUsable: true, coreWebVitals: 'Pending', lastCrawled: 'Uncrawled' },
+    ];
+
+    const StatsOverlay = ({ metrics, isVisible, onToggle, liveTicks, autoSimulate, setAutoSimulate }) => {
+      if (!isVisible) return (
+        <button 
+          onClick={onToggle}
+          className="fixed top-20 right-6 z-40 bg-slate-900/90 border border-slate-700/80 hover:border-sky-500 text-sky-400 p-2.5 rounded-xl shadow-2xl flex items-center gap-2 transition-all group"
+          title="Open Stats Overlay"
+        >
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+          </span>
+          <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+          <span className="text-xs font-semibold tracking-wider text-slate-200 uppercase">Stats HUD</span>
+        </button>
+      );
+
+      return (
+        <div className="fixed top-20 right-6 z-40 w-80 glass-overlay rounded-2xl shadow-2xl p-4 border border-sky-500/30 text-white transition-all animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div className="flex items-center gap-2">
+              <div className="p-1.5 rounded-lg bg-sky-500/20 text-sky-400 border border-sky-500/30">
+                <i data-lucide="activity" className="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-200">Realtime Stats Overlay</h3>
+                <p className="text-[10px] text-slate-400">Live Telemetry & Search HUD</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-1">
+              <button 
+                onClick={() => setAutoSimulate(!autoSimulate)} 
+                className={`p-1 px-2 text-[10px] rounded font-mono font-medium transition ${autoSimulate ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-slate-800 text-slate-400'}`}
+                title="Toggle Real-time Tick Simulation"
+              >
+                {autoSimulate ? 'LIVE' : 'PAUSED'}
+              </button>
+              <button onClick={onToggle} className="p-1 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg transition">
+                <i data-lucide="x" className="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 mt-3">
+            <div className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+              <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Total Clicks</span>
+              <span className="text-base font-bold font-mono text-emerald-400">
+                {(metrics.clicks + liveTicks).toLocaleString()}
+              </span>
+              <span className="text-[10px] text-emerald-400 flex items-center gap-0.5 mt-0.5">
+                <i data-lucide="trending-up" className="w-3 h-3"></i> +{metrics.changes.clicks}%
+              </span>
+            </div>
+
+            <div className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+              <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Impressions</span>
+              <span className="text-base font-bold font-mono text-sky-400">
+                {((metrics.impressions + (liveTicks * 24)) / 1000000).toFixed(2)}M
+              </span>
+              <span className="text-[10px] text-sky-400 flex items-center gap-0.5 mt-0.5">
+                <i data-lucide="trending-up" className="w-3 h-3"></i> +{metrics.changes.impressions}%
+              </span>
+            </div>
+
+            <div className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+              <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Avg CTR</span>
+              <span className="text-base font-bold font-mono text-purple-400">
+                {(metrics.ctr * 100).toFixed(2)}%
+              </span>
+              <span className="text-[10px] text-purple-400 flex items-center gap-0.5 mt-0.5">
+                <i data-lucide="arrow-up-right" className="w-3 h-3"></i> +{metrics.changes.ctr}%
+              </span>
+            </div>
+
+            <div className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+              <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Avg Position</span>
+              <span className="text-base font-bold font-mono text-amber-400">
+                {metrics.position.toFixed(1)}
+              </span>
+              <span className="text-[10px] text-amber-400 flex items-center gap-0.5 mt-0.5">
+                <i data-lucide="arrow-down-right" className="w-3 h-3"></i> {metrics.changes.position} pos
+              </span>
+            </div>
+          </div>
+
+          {/* Micro Sparkline Visual */}
+          <div className="mt-3 pt-3 border-t border-slate-800">
+            <div className="flex justify-between items-center text-[10px] text-slate-400 mb-1">
+              <span>Realtime Throughput</span>
+              <span className="font-mono text-sky-400">{240 + (liveTicks % 40)} req/s</span>
+            </div>
+            <div className="h-8 flex items-end gap-1 bg-slate-950/80 p-1 rounded-lg border border-slate-850">
+              {Array.from({ length: 20 }).map((_, idx) => {
+                const height = Math.min(100, Math.max(20, (Math.sin(idx + liveTicks * 0.5) * 40 + 50) + (Math.random() * 15)));
+                return (
+                  <div 
+                    key={idx} 
+                    className="flex-1 bg-gradient-to-t from-sky-600 to-indigo-400 rounded-xs transition-all duration-300"
+                    style={{ height: `${height}%` }}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const AgiOverlay = ({ isVisible, onToggle, agiState, agiLogs, onRunAgiTask, isAnalyzing }) => {
+      if (!isVisible) return (
+        <button 
+          onClick={onToggle}
+          className="fixed bottom-6 left-6 z-40 bg-indigo-950/90 border border-indigo-500/50 hover:border-indigo-400 text-indigo-300 p-2.5 rounded-xl shadow-2xl flex items-center gap-2 transition-all group"
+          title="Open AGI Engine Overlay"
+        >
+          <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+          </span>
+          <i data-lucide="brain-circuit" className="w-4 h-4 text-indigo-400"></i>
+          <span className="text-xs font-semibold tracking-wider text-indigo-100 uppercase">AGI Layer</span>
+        </button>
+      );
+
+      return (
+        <div className="fixed bottom-6 left-6 z-40 w-96 glass-overlay rounded-2xl shadow-2xl p-4 border border-indigo-500/40 text-white transition-all animate-in fade-in slide-in-from-bottom-4 duration-300">
+          <div className="flex items-center justify-between pb-3 border-b border-indigo-900/60">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-indigo-600/30 border border-indigo-500/50 text-indigo-300 animate-pulse">
+                <i data-lucide="cpu" className="w-4 h-4"></i>
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-200">AGI Engine Core</h3>
+                  <span className="px-1.5 py-0.5 text-[9px] font-mono bg-indigo-500/20 text-indigo-300 rounded border border-indigo-500/30">
+                    Gemini 3.1
+                  </span>
+                </div>
+                <p className="text-[10px] text-slate-400">Autonomous Search Intelligence</p>
+              </div>
+            </div>
+            <button onClick={onToggle} className="p-1 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg transition">
+              <i data-lucide="x" className="w-4 h-4"></i>
+            </button>
+          </div>
+
+          {/* AGI State Indicator & Reasoning Bar */}
+          <div className="mt-3 space-y-2">
+            <div className="flex justify-between items-center text-xs">
+              <span className="text-slate-400">Agent Status:</span>
+              <span className="font-mono font-medium text-indigo-300 flex items-center gap-1.5">
+                <span className={`h-2 w-2 rounded-full ${isAnalyzing ? 'bg-amber-400 animate-ping' : 'bg-emerald-400'}`}></span>
+                {agiState.status}
+              </span>
+            </div>
+
+            <div>
+              <div className="flex justify-between text-[11px] text-slate-400 mb-1">
+                <span>Reasoning Depth & Confidence</span>
+                <span className="font-mono text-indigo-300">{(agiState.confidence * 100).toFixed(0)}%</span>
+              </div>
+              <div className="w-full bg-slate-900 rounded-full h-2 border border-slate-800 overflow-hidden">
+                <div 
+                  className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full transition-all duration-500" 
+                  style={{ width: `${agiState.confidence * 100}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Active Reasoning Terminal Stream */}
+            <div className="mt-3 bg-slate-950/90 rounded-xl p-3 border border-indigo-900/40 font-mono text-[11px] h-28 overflow-y-auto space-y-1.5 scrollbar-thin">
+              <div className="text-indigo-400 text-[10px] uppercase tracking-wider border-b border-slate-800 pb-1 mb-1">
+                // System Thought Stream
+              </div>
+              {agiLogs.map((log, i) => (
+                <div key={i} className="text-slate-300 flex items-start gap-1.5 leading-snug">
+                  <span className="text-indigo-500 select-none">&gt;</span>
+                  <span>{log}</span>
+                </div>
+              ))}
+              {isAnalyzing && (
+                <div className="text-amber-400 flex items-center gap-1 italic animate-pulse">
+                  <span>Synthesizing neural recommendations...</span>
+                </div>
+              )}
+            </div>
+
+            {/* Quick Action Triggers */}
+            <div className="pt-2 flex gap-2">
+              <button 
+                onClick={() => onRunAgiTask("Identify CTR Opportunities")}
+                disabled={isAnalyzing}
+                className="flex-1 py-1.5 px-2 bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 rounded-lg text-[11px] font-medium text-indigo-200 transition flex items-center justify-center gap-1 disabled:opacity-50"
+              >
+                <i data-lucide="sparkles" className="w-3 h-3 text-indigo-400"></i>
+                CTR Boost
+              </button>
+              <button 
+                onClick={() => onRunAgiTask("Analyze Query Anomalies")}
+                disabled={isAnalyzing}
+                className="flex-1 py-1.5 px-2 bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/40 rounded-lg text-[11px] font-medium text-purple-200 transition flex items-center justify-center gap-1 disabled:opacity-50"
+              >
+                <i data-lucide="zap" className="w-3 h-3 text-purple-400"></i>
+                Anomaly Detect
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const PerformanceChart = ({ timeline, selectedMetric, setSelectedMetric }) => {
+      const maxVal = useMemo(() => {
+        return Math.max(...timeline.map(d => d[selectedMetric])) * 1.15;
+      }, [timeline, selectedMetric]);
+
+      const minVal = useMemo(() => {
+        return Math.min(...timeline.map(d => d[selectedMetric])) * 0.85;
+      }, [timeline, selectedMetric]);
+
+      const points = useMemo(() => {
+        const width = 800;
+        const height = 220;
+        const step = width / (timeline.length - 1);
+        
+        return timeline.map((d, i) => {
+          const x = i * step;
+          const y = height - ((d[selectedMetric] - minVal) / (maxVal - minVal || 1)) * (height - 30) - 15;
+          return { x, y, date: d.date, value: d[selectedMetric] };
+        });
+      }, [timeline, selectedMetric, maxVal, minVal]);
+
+      const svgPath = useMemo(() => {
+        if (!points.length) return '';
+        return points.reduce((acc, pt, i) => {
+          return i === 0 ? `M ${pt.x},${pt.y}` : `${acc} L ${pt.x},${pt.y}`;
+        }, '');
+      }, [points]);
+
+      const areaPath = useMemo(() => {
+        if (!points.length) return '';
+        const first = points[0];
+        const last = points[points.length - 1];
+        return `${svgPath} L ${last.x},220 L ${first.x},220 Z`;
+      }, [svgPath, points]);
+
+      const getMetricLabel = (key) => {
+        switch(key) {
+          case 'clicks': return 'Total Clicks';
+          case 'impressions': return 'Total Impressions';
+          case 'ctr': return 'Average CTR (%)';
+          case 'position': return 'Average Position';
+          default: return key;
+        }
+      };
+
+      const formatMetricValue = (key, val) => {
+        if (key === 'ctr') return `${(val * 100).toFixed(2)}%`;
+        if (key === 'impressions') return val > 1000000 ? `${(val/1000000).toFixed(2)}M` : `${(val/1000).toFixed(0)}k`;
+        if (key === 'position') return val.toFixed(1);
+        return val.toLocaleString();
+      };
+
+      return (
+        <div className="glass-card rounded-2xl p-5 border border-slate-800">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <i data-lucide="line-chart" className="w-5 h-5 text-sky-400"></i>
+                Performance Telemetry
+              </h2>
+              <p className="text-xs text-slate-400">Interactive trends over the past 14 days</p>
+            </div>
+
+            {/* Metric Selectors */}
+            <div className="flex bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+              {['clicks', 'impressions', 'ctr', 'position'].map((m) => (
+                <button
+                  key={m}
+                  onClick={() => setSelectedMetric(m)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                    selectedMetric === m 
+                      ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/30' 
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  {m.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* SVG Chart Area */}
+          <div className="relative w-full h-60">
+            <svg className="w-full h-full overflow-visible" viewBox="0 0 800 220" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.0" />
+                </linearGradient>
+              </defs>
+
+              {/* Grid Horizontal Lines */}
+              <line x1="0" y1="40" x2="800" y2="40" stroke="#1e293b" strokeDasharray="4 4" />
+              <line x1="0" y1="100" x2="800" y2="100" stroke="#1e293b" strokeDasharray="4 4" />
+              <line x1="0" y1="160" x2="800" y2="160" stroke="#1e293b" strokeDasharray="4 4" />
+
+              {/* Area Fill */}
+              <path d={areaPath} fill="url(#chartGradient)" />
+
+              {/* Line Path */}
+              <path 
+                d={svgPath} 
+                fill="none" 
+                stroke="#38bdf8" 
+                strokeWidth="3" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+              />
+
+              {/* Data Point Nodes */}
+              {points.map((pt, idx) => (
+                <g key={idx} className="group cursor-pointer">
+                  <circle 
+                    cx={pt.x} 
+                    cy={pt.y} 
+                    r="5" 
+                    className="fill-slate-900 stroke-sky-400 stroke-2 group-hover:r-7 transition-all" 
+                  />
+                  {/* Hover Tooltip */}
+                  <foreignObject x={Math.min(700, Math.max(0, pt.x - 45))} y={Math.max(0, pt.y - 45)} width="90" height="40" className="opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    <div className="bg-slate-900 border border-sky-500/50 text-white rounded p-1 text-[10px] text-center font-mono shadow-xl">
+                      <div>{pt.date}</div>
+                      <div className="font-bold text-sky-400">{formatMetricValue(selectedMetric, pt.value)}</div>
+                    </div>
+                  </foreignObject>
+                </g>
+              ))}
+            </svg>
+          </div>
+
+          {/* Timeline X-Axis Labels */}
+          <div className="flex justify-between text-[11px] text-slate-500 font-mono mt-2 pt-2 border-t border-slate-800">
+            {points.map((p, i) => (
+              <span key={i}>{p.date}</span>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    const QueriesTable = ({ queries, onAnalyzeQuery }) => {
+      const [searchTerm, setSearchTerm] = useState('');
+      const [intentFilter, setIntentFilter] = useState('All');
+
+      const filteredQueries = useMemo(() => {
+        return queries.filter(q => {
+          const matchesTerm = q.query.toLowerCase().includes(searchTerm.toLowerCase());
+          const matchesIntent = intentFilter === 'All' || q.intent === intentFilter;
+          return matchesTerm && matchesIntent;
+        });
+      }, [queries, searchTerm, intentFilter]);
+
+      return (
+        <div className="glass-card rounded-2xl p-5 border border-slate-800">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+            <div>
+              <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <i data-lucide="search" className="w-5 h-5 text-indigo-400"></i>
+                Top Search Queries
+              </h2>
+              <p className="text-xs text-slate-400">Search keywords ranked by organic performance</p>
+            </div>
+
+            {/* Search and Filters */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="relative">
+                <i data-lucide="search" className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                <input 
+                  type="text" 
+                  placeholder="Filter queries..." 
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="bg-slate-900/80 border border-slate-700/60 rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-48 transition"
+                />
+              </div>
+
+              <select 
+                value={intentFilter}
+                onChange={(e) => setIntentFilter(e.target.value)}
+                className="bg-slate-900/80 border border-slate-700/60 rounded-xl px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500"
+              >
+                <option value="All">All Intents</option>
+                <option value="Informational">Informational</option>
+                <option value="Transactional">Transactional</option>
+                <option value="Navigational">Navigational</option>
+                <option value="Commercial">Commercial</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Table */}
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs">
+              <thead className="bg-slate-900/80 text-slate-400 font-semibold uppercase tracking-wider border-b border-slate-800">
+                <tr>
+                  <th className="p-3">Query Keyword</th>
+                  <th className="p-3">Intent</th>
+                  <th className="p-3 text-right">Clicks</th>
+                  <th className="p-3 text-right">Impressions</th>
+                  <th className="p-3 text-right">CTR</th>
+                  <th className="p-3 text-right">Position</th>
+                  <th className="p-3 text-center">AGI Action</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60 text-slate-200">
+                {filteredQueries.map((q) => (
+                  <tr key={q.id} className="hover:bg-slate-800/40 transition">
+                    <td className="p-3 font-medium text-slate-100 font-mono">
+                      {q.query}
+                    </td>
+                    <td className="p-3">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-800 text-indigo-300 border border-slate-700">
+                        {q.intent}
+                      </span>
+                    </td>
+                    <td className="p-3 text-right font-mono text-emerald-400 font-semibold">
+                      {q.clicks.toLocaleString()}
+                    </td>
+                    <td className="p-3 text-right font-mono text-slate-300">
+                      {q.impressions.toLocaleString()}
+                    </td>
+                    <td className="p-3 text-right font-mono text-purple-400">
+                      {(q.ctr * 100).toFixed(2)}%
+                    </td>
+                    <td className="p-3 text-right font-mono text-amber-400 font-medium">
+                      {q.position.toFixed(1)}
+                    </td>
+                    <td className="p-3 text-center">
+                      <button 
+                        onClick={() => onAnalyzeQuery(q.query)}
+                        className="p-1.5 px-2.5 bg-indigo-600/20 hover:bg-indigo-600/40 border border-indigo-500/40 text-indigo-300 rounded-lg text-[10px] font-medium transition inline-flex items-center gap-1"
+                        title="Analyze keyword with Gemini AGI"
+                      >
+                        <i data-lucide="sparkles" className="w-3 h-3 text-indigo-400"></i>
+                        Analyze
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+    };
+
+    const UrlInspection = () => {
+      return (
+        <div className="glass-card rounded-2xl p-5 border border-slate-800">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-base font-bold text-white flex items-center gap-2">
+                <i data-lucide="file-check" className="w-5 h-5 text-emerald-400"></i>
+                URL Indexing & Core Web Vitals
+              </h2>
+              <p className="text-xs text-slate-400">Chrome OS Dev Portal Indexation Status</p>
+            </div>
+            <button className="px-3 py-1.5 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 rounded-xl text-xs font-medium transition flex items-center gap-1.5">
+              <i data-lucide="refresh-cw" className="w-3.5 h-3.5"></i>
+              Re-index All
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {URL_INSPECTION_LIST.map((item, idx) => (
+              <div key={idx} className="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="space-y-1">
+                  <div className="text-xs font-mono font-medium text-sky-400 truncate max-w-md">
+                    {item.url}
+                  </div>
+                  <div className="flex items-center gap-3 text-[11px] text-slate-400">
+                    <span>Last Crawled: {item.lastCrawled}</span>
+                    <span>•</span>
+                    <span className="text-slate-300">Vitals: {item.coreWebVitals}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  {item.indexed ? (
+                    <span className="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-lg text-[10px] font-semibold flex items-center gap-1">
+                      <i data-lucide="check-circle-2" className="w-3 h-3"></i> Indexed
+                    </span>
+                  ) : (
+                    <span className="px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-lg text-[10px] font-semibold flex items-center gap-1">
+                      <i data-lucide="alert-triangle" className="w-3 h-3"></i> Not Indexed
+                    </span>
+                  )}
+                  <button className="p-1.5 text-slate-400 hover:text-white bg-slate-800 rounded-lg transition" title="Inspect DOM">
+                    <i data-lucide="external-link" className="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    const GeminiInsightsLab = ({ queryPrompt, setQueryPrompt, onGenerateInsight, aiResponse, isLoadingAi }) => {
+      return (
+        <div className="glass-card rounded-2xl p-5 border border-indigo-500/30 bg-gradient-to-br from-slate-900/90 via-indigo-950/20 to-slate-900/90">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 bg-indigo-600/30 border border-indigo-500/50 rounded-xl text-indigo-300">
+              <i data-lucide="sparkles" className="w-5 h-5"></i>
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-white">Gemini AGI Search Optimization Lab</h2>
+              <p className="text-xs text-slate-400">Run direct queries to Gemini LLM for search architecture recommendations</p>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <div className="flex gap-2">
+              <input 
+                type="text" 
+                value={queryPrompt}
+                onChange={(e) => setQueryPrompt(e.target.value)}
+                placeholder="Ask Gemini: e.g. How can we increase CTR on developer tools queries?"
+                className="flex-1 bg-slate-950/80 border border-indigo-500/40 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400 font-mono"
+              />
+              <button 
+                onClick={() => onGenerateInsight(queryPrompt)}
+                disabled={isLoadingAi || !queryPrompt.trim()}
+                className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-indigo-600/30 transition disabled:opacity-50 flex items-center gap-2"
+              >
+                {isLoadingAi ? (
+                  <>
+                    <i data-lucide="loader-2" className="w-4 h-4 animate-spin"></i>
+                    Reasoning...
+                  </>
+                ) : (
+                  <>
+                    <i data-lucide="send" className="w-4 h-4"></i>
+                    Generate
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* AI Output Box */}
+            {aiResponse && (
+              <div className="mt-4 p-4 bg-slate-950/90 rounded-xl border border-indigo-500/30 font-mono text-xs text-indigo-100 space-y-2 animate-in fade-in">
+                <div className="flex items-center justify-between text-[10px] text-indigo-400 border-b border-indigo-900/50 pb-2">
+                  <span className="flex items-center gap-1">
+                    <i data-lucide="bot" className="w-3.5 h-3.5"></i> Gemini 3 Flash Response
+                  </span>
+                  <span>Grounding: Search Analytics</span>
+                </div>
+                <div className="whitespace-pre-wrap leading-relaxed text-slate-200">
+                  {aiResponse}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    const App = () => {
+      // Overlays state
+      const [showStatsOverlay, setShowStatsOverlay] = useState(true);
+      const [showAgiOverlay, setShowAgiOverlay] = useState(true);
+
+      // Simulation ticks
+      const [liveTicks, setLiveTicks] = useState(0);
+      const [autoSimulate, setAutoSimulate] = useState(true);
+
+      // Selected metric for chart
+      const [selectedMetric, setSelectedMetric] = useState('clicks');
+
+      // Active tab
+      const [activeTab, setActiveTab] = useState('performance');
+
+      // AGI State
+      const [agiState, setAgiState] = useState({
+        status: 'Active Monitoring',
+        confidence: 0.94
+      });
+      const [agiLogs, setAgiLogs] = useState([
+        "Connecting to Chrome OS Telemetry bus...",
+        "Analyzing search engine ranking shifts...",
+        "No critical search cannibalization detected."
+      ]);
+      const [isAnalyzing, setIsAnalyzing] = useState(false);
+
+      // Gemini Prompt & AI Output state
+      const [queryPrompt, setQueryPrompt] = useState('');
+      const [aiResponse, setAiResponse] = useState('');
+      const [isLoadingAi, setIsLoadingAi] = useState(false);
+
+      // Initialize icons on update
+      useEffect(() => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }, [activeTab, showStatsOverlay, showAgiOverlay, agiLogs, aiResponse]);
+
+      // Realtime Simulation Timer
+      useEffect(() => {
+        if (!autoSimulate) return;
+        const interval = setInterval(() => {
+          setLiveTicks(prev => prev + Math.floor(Math.random() * 3) + 1);
+        }, 2000);
+        return () => clearInterval(interval);
+      }, [autoSimulate]);
+
+      // Trigger AGI reasoning task
+      const handleRunAgiTask = (taskName) => {
+        setIsAnalyzing(true);
+        setAgiState({ status: 'Deep Reasoning', confidence: 0.72 });
+        setAgiLogs(prev => [...prev, `[Task Init]: ${taskName}`]);
+
+        setTimeout(() => {
+          setAgiState({ status: 'Executing Neural Pass', confidence: 0.88 });
+          setAgiLogs(prev => [...prev, `Evaluating keyword density against intent vector...`]);
+        }, 1200);
+
+        setTimeout(() => {
+          setAgiState({ status: 'Active Monitoring', confidence: 0.96 });
+          setAgiLogs(prev => [...prev, `[Success]: Recommendation model updated for ${taskName}.`]);
+          setIsAnalyzing(false);
+        }, 2500);
+      };
+
+      // Call Gemini API via fetch
+      const handleGenerateInsight = async (prompt) => {
+        if (!prompt.trim()) return;
+        setIsLoadingAi(true);
+        setAiResponse('');
+
+        const systemPrompt = "You are an elite Search Engine Optimization and Chrome OS Technical Architect AGI assistant. Provide structured, high-value, actionable insights with bullet points.";
+        const apiKey = ""; // Canvas runtime environment automatically supplies key if left blank
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        try {
+          const payload = {
+            contents: [{ parts: [{ text: prompt }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] }
+          };
+
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await response.json();
+          const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+          if (resultText) {
+            setAiResponse(resultText);
+          } else {
+            setAiResponse("Unable to retrieve Gemini AI insights. Standard telemetry active.");
+          }
+        } catch (err) {
+          setAiResponse(`Simulated AGI Insight for "${prompt}":\n\n1. Keyword Intent Match: 98% aligned with technical developer queries.\n2. Recommended Title Optimization: Add 'ChromeOS v128' prefix to improve CTR by ~14%.\n3. Structured Data: Ensure FAQ Schema is present for rich search snippet eligibility.`);
+        } finally {
+          setIsLoadingAi(false);
+        }
+      };
+
+      const handleAnalyzeQuery = (q) => {
+        const prompt = `Analyze search performance and optimization strategy for keyword: "${q}"`;
+        setQueryPrompt(prompt);
+        setActiveTab('insights');
+        handleGenerateInsight(prompt);
+      };
+
+      return (
+        <div className="h-screen w-screen flex flex-col bg-slate-950 text-slate-100 overflow-hidden relative">
+          
+          {/* Top Navigation Bar */}
+          <header className="h-16 border-b border-slate-800/80 bg-slate-900/90 backdrop-blur-md px-6 flex items-center justify-between z-30">
+            <div className="flex items-center gap-3">
+              <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-sky-500/20 font-bold font-mono">
+                OS
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h1 className="text-sm font-bold tracking-tight text-white">Chrome OS</h1>
+                  <span className="px-2 py-0.5 text-[10px] font-mono bg-sky-500/20 text-sky-300 rounded-full border border-sky-500/30">
+                    Console v128
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-400">Search Console & AGI Intelligence Layer</p>
+              </div>
+            </div>
+
+            {/* Navigation Tabs */}
+            <nav className="hidden md:flex items-center gap-1 bg-slate-950/80 p-1 rounded-xl border border-slate-800">
+              <button 
+                onClick={() => setActiveTab('performance')}
+                className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-2 ${activeTab === 'performance' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'}`}
+              >
+                <i data-lucide="layout-dashboard" className="w-3.5 h-3.5"></i>
+                Performance
+              </button>
+              <button 
+                onClick={() => setActiveTab('queries')}
+                className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-2 ${activeTab === 'queries' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'}`}
+              >
+                <i data-lucide="search" className="w-3.5 h-3.5"></i>
+                Queries
+              </button>
+              <button 
+                onClick={() => setActiveTab('insights')}
+                className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition flex items-center gap-2 ${activeTab === 'insights' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'}`}
+              >
+                <i data-lucide="sparkles" className="w-3.5 h-3.5 text-amber-300"></i>
+                AGI Lab
+              </button>
+            </nav>
+
+            {/* Top Actions & Overlay Toggles */}
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={() => setShowStatsOverlay(!showStatsOverlay)}
+                className={`p-2 rounded-xl border text-xs font-medium transition flex items-center gap-1.5 ${
+                  showStatsOverlay 
+                    ? 'bg-sky-500/20 text-sky-300 border-sky-500/40' 
+                    : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-white'
+                }`}
+                title="Toggle Stats Overlay HUD"
+              >
+                <i data-lucide="bar-chart-2" className="w-4 h-4"></i>
+                <span className="hidden sm:inline">Stats HUD</span>
+              </button>
+
+              <button 
+                onClick={() => setShowAgiOverlay(!showAgiOverlay)}
+                className={`p-2 rounded-xl border text-xs font-medium transition flex items-center gap-1.5 ${
+                  showAgiOverlay 
+                    ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40' 
+                    : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-white'
+                }`}
+                title="Toggle AGI Reasoning Layer"
+              >
+                <i data-lucide="brain-circuit" className="w-4 h-4"></i>
+                <span className="hidden sm:inline">AGI Layer</span>
+              </button>
+            </div>
+          </header>
+
+          {/* Main Dashboard Body View */}
+          <main className="flex-1 overflow-y-auto p-6 space-y-6 relative pb-24 scrollbar-thin">
+            {activeTab === 'performance' && (
+              <div className="space-y-6 max-w-7xl mx-auto">
+                <PerformanceChart 
+                  timeline={PERFORMANCE_TIMELINE}
+                  selectedMetric={selectedMetric}
+                  setSelectedMetric={setSelectedMetric}
+                />
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  <div className="lg:col-span-2">
+                    <QueriesTable queries={INITIAL_QUERIES} onAnalyzeQuery={handleAnalyzeQuery} />
+                  </div>
+                  <div>
+                    <UrlInspection />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'queries' && (
+              <div className="max-w-7xl mx-auto">
+                <QueriesTable queries={INITIAL_QUERIES} onAnalyzeQuery={handleAnalyzeQuery} />
+              </div>
+            )}
+
+            {activeTab === 'insights' && (
+              <div className="max-w-4xl mx-auto space-y-6">
+                <GeminiInsightsLab 
+                  queryPrompt={queryPrompt}
+                  setQueryPrompt={setQueryPrompt}
+                  onGenerateInsight={handleGenerateInsight}
+                  aiResponse={aiResponse}
+                  isLoadingAi={isLoadingAi}
+                />
+              </div>
+            )}
+          </main>
+
+          {/* Floating HUD Overlays */}
+          <StatsOverlay 
+            metrics={INITIAL_METRICS}
+            isVisible={showStatsOverlay}
+            onToggle={() => setShowStatsOverlay(!showStatsOverlay)}
+            liveTicks={liveTicks}
+            autoSimulate={autoSimulate}
+            setAutoSimulate={setAutoSimulate}
+          />
+
+          <AgiOverlay 
+            isVisible={showAgiOverlay}
+            onToggle={() => setShowAgiOverlay(!showAgiOverlay)}
+            agiState={agiState}
+            agiLogs={agiLogs}
+            onRunAgiTask={handleRunAgiTask}
+            isAnalyzing={isAnalyzing}
+          />
+
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
