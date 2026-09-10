@@ -2,7 +2,13 @@ import shutil
 import time
 import argparse
 import tempfile
+import sys
 from pathlib import Path
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
 
 def build_root_distro(project_root, dist_dir, timestamp):
     """
@@ -172,12 +178,64 @@ def build_lightweight_distro(project_root, dist_dir, timestamp):
     return f"{target_path}.zip"
 
 
+def build_moonbase_distro(project_root, dist_dir, timestamp):
+    """
+    Build the MOONBASE.BOT / BUSTER.BOT distribution.
+    Packages the Discord bot, Minecraft open-world integration, and space economy tools.
+    """
+    archive_name = f"moonbase-bot-{timestamp}"
+    
+    print(f"📦 Building MOONBASE.BOT / BUSTER.BOT Distribution...")
+    print(f"   Includes: moonbase_bot/, buster_bot/, core/, Minecraft config, Docker stacks")
+    
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_root = Path(temp_dir) / archive_name
+        temp_root.mkdir()
+        
+        dirs_to_include = [
+            "moonbase_bot",
+            "buster_bot",
+            "core",
+        ]
+        
+        files_to_include = [
+            "moonbase_bot.py",
+            "BUSTER_BOT.py",
+            "test_moonbase_bot.py",
+            "docker-compose.minecraft.yml",
+            "Dockerfile.moonbase",
+            ".env.minecraft.example",
+            "MOONBASE_BOT_GUIDE.md",
+            "token_manager.py",
+            "requirements.txt",
+        ]
+        
+        for dir_name in dirs_to_include:
+            src_dir = project_root / dir_name
+            if src_dir.exists():
+                dst_dir = temp_root / dir_name
+                print(f"   📂 Copying {dir_name}/")
+                shutil.copytree(src_dir, dst_dir, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+                
+        for file_name in files_to_include:
+            src_file = project_root / file_name
+            if src_file.exists():
+                print(f"   📄 Copying {file_name}")
+                shutil.copy2(src_file, temp_root / file_name)
+                
+        target_path = dist_dir / archive_name
+        shutil.make_archive(str(target_path), "zip", temp_root)
+        
+    print(f"✅ MOONBASE.BOT build complete! Archive created at: {target_path}.zip")
+    return f"{target_path}.zip"
+
+
 def build_distro(build_type="root"):
     """
     Main build function that dispatches to the appropriate build type.
     
     Args:
-        build_type: "root" for full distribution, "lightweight" for minimal distribution
+        build_type: "root", "lightweight", "moonbase", or "bot"
     """
     project_root = Path(__file__).parent.parent
     dist_dir = project_root / "dist"
@@ -195,9 +253,11 @@ def build_distro(build_type="root"):
         return build_root_distro(project_root, dist_dir, timestamp)
     elif build_type == "lightweight":
         return build_lightweight_distro(project_root, dist_dir, timestamp)
+    elif build_type in ("moonbase", "bot", "moonbase.bot", "buster.bot"):
+        return build_moonbase_distro(project_root, dist_dir, timestamp)
     else:
         print(f"❌ Unknown build type: {build_type}")
-        print(f"   Valid options: 'root', 'lightweight'")
+        print(f"   Valid options: 'root', 'lightweight', 'moonbase', 'bot'")
         return None
 
 if __name__ == "__main__":
@@ -208,19 +268,21 @@ if __name__ == "__main__":
 Build Types:
   root         Full distribution with all components (default)
   lightweight  Minimal distribution with core functionality only
+  moonbase     MOONBASE.BOT / BUSTER.BOT Minecraft Discord sentinel package
   both         Build both root and lightweight versions
 
 Examples:
   python scripts/build_distro.py              # Build root (full) version
   python scripts/build_distro.py --type root  # Build root (full) version
   python scripts/build_distro.py --type lightweight  # Build lightweight version
+  python scripts/build_distro.py --type moonbase     # Build moonbase.bot version
   python scripts/build_distro.py --type both  # Build both versions
         """
     )
     
     parser.add_argument(
         "--type",
-        choices=["root", "lightweight", "both"],
+        choices=["root", "lightweight", "moonbase", "bot", "both"],
         default="root",
         help="Type of distribution to build (default: root)"
     )

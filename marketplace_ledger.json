@@ -1,0 +1,18 @@
+{
+  "balances": {
+    "TestPioneer": 60
+  },
+  "purchases": [
+    {
+      "tx_id": "tx_1789026247_Test",
+      "player": "TestPioneer",
+      "item_id": "rations_crate",
+      "item_name": "Hydroponic Rations Crate",
+      "quantity": 1,
+      "tokens_spent": 40,
+      "remaining_balance": 60,
+      "delivery_status": "Delivery queued (RCON error: Failed to connect to RCON server 127.0.0.1:25575: [WinError 10061] No connection could be made because the target machine actively refused it)",
+      "timestamp": 1789026247.0819175
+    }
+  ]
+}

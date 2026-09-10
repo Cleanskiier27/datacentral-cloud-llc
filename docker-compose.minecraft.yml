@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  minecraft-server:
+    image: itzg/minecraft-server:latest
+    container_name: moonbase-minecraft-server
+    restart: unless-stopped
+    ports:
+      - "25565:25565"  # Minecraft Server Port
+      - "25575:25575"  # RCON Port
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.20.4"
+      TYPE: "PAPER"
+      MEMORY: "4G"
+      MOTD: "§b§lMOONBASE.BOT §8| §aOpen World Minecraft §8| §eDiscord: Active"
+      LEVEL_NAME: "MoonbaseAlpha_OpenWorld"
+      DIFFICULTY: "normal"
+      MODE: "survival"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "BusterOpenWorld2026!"
+      RCON_PORT: "25575"
+      VIEW_DISTANCE: "10"
+      SPAWN_PROTECTION: "16"
+      ENABLE_QUERY: "true"
+      QUERY_PORT: "25565"
+      ONLINE_MODE: "true"
+    volumes:
+      - ./minecraft-data:/data
+    networks:
+      - moonbase-net
+
+  moonbase-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.moonbase
+    container_name: moonbase-discord-bot
+    restart: unless-stopped
+    depends_on:
+      - minecraft-server
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN:-}
+      - DISCORD_CHAT_CHANNEL_ID=${DISCORD_CHAT_CHANNEL_ID:-}
+      - MINECRAFT_HOST=minecraft-server
+      - MINECRAFT_QUERY_PORT=25565
+      - MINECRAFT_RCON_PORT=25575
+      - MINECRAFT_RCON_PASSWORD=BusterOpenWorld2026!
+      - BUSTER_BOT_PREFIX=!
+    volumes:
+      - ./tokens.json:/app/tokens.json
+    networks:
+      - moonbase-net
+
+networks:
+  moonbase-net:
+    driver: bridge

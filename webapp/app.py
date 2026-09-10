@@ -28,6 +28,16 @@ FLASH_COMMANDS = {
         "name": "Verify Web3",
         "command": [sys.executable, "scripts/web3_verifier.py", "--demo"],
         "description": "Verifies Ethereum connection and demonstrates ownership proof."
+    },
+    "moonbase_build": {
+        "name": "Build MOONBASE.BOT",
+        "command": [sys.executable, "scripts/build_moonbase_bot.py"],
+        "description": "Packages MOONBASE.BOT / BUSTER.BOT for open-world Minecraft and Discord."
+    },
+    "buster_status": {
+        "name": "BUSTER.BOT Status",
+        "command": [sys.executable, "moonbase_bot.py", "--command", "status"],
+        "description": "Checks Minecraft server online telemetry and BUSTER.BOT status."
     }
 }
 
@@ -132,6 +142,58 @@ def distro_info():
         })
     
     return jsonify({"status": "success", "distros": sorted(distros, key=lambda x: x['created'], reverse=True)})
+
+# --- Open World Space Economy Marketplace Routes ---
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if repo_root not in sys.path:
+    sys.path.insert(0, repo_root)
+
+from moonbase_bot.marketplace import MarketplaceManager
+marketplace_mgr = MarketplaceManager()
+
+@app.route('/api/marketplace/items', methods=['GET'])
+def api_marketplace_items():
+    category = request.args.get('category')
+    items = marketplace_mgr.get_items(category)
+    return jsonify({"status": "success", "count": len(items), "items": items})
+
+@app.route('/api/marketplace/balance/<player_name>', methods=['GET'])
+def api_marketplace_balance(player_name):
+    balance = marketplace_mgr.get_player_balance(player_name)
+    return jsonify({"status": "success", "player": player_name, "balance": balance})
+
+@app.route('/api/marketplace/inventory/<player_name>', methods=['GET'])
+def api_marketplace_inventory(player_name):
+    inventory = marketplace_mgr.get_player_inventory(player_name)
+    return jsonify({"status": "success", "player": player_name, "count": len(inventory), "inventory": inventory})
+
+@app.route('/api/marketplace/buy', methods=['POST'])
+def api_marketplace_buy():
+    data = request.get_json() or {}
+    player = data.get("player") or request.form.get("player")
+    item_id = data.get("item_id") or request.form.get("item_id")
+    token_str = data.get("token") or request.form.get("token")
+    quantity = int(data.get("quantity") or request.form.get("quantity") or 1)
+
+    if not player or not item_id:
+        return jsonify({"status": "error", "message": "Missing 'player' or 'item_id' in request."}), 400
+
+    result = marketplace_mgr.purchase_item(
+        player_name=player,
+        item_id=item_id,
+        token_str=token_str,
+        quantity=quantity,
+    )
+    if result.get("success"):
+        return jsonify({"status": "success", "transaction": result})
+    else:
+        return jsonify({"status": "error", "message": result.get("error")}), 400
+
+@app.route('/marketplace', methods=['GET'])
+def marketplace_view():
+    items = marketplace_mgr.get_items()
+    categories = sorted(list(set(i['category'] for i in items)))
+    return render_template('marketplace.html', items=items, categories=categories)
 
 if __name__ == "__main__":
     # Unified Certificate Configuration

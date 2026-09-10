@@ -25,3 +25,26 @@ setup-arch:
 setup-linux:
 	chmod +x ./setup_linux.sh
 	./setup_linux.sh
+
+# --- MOONBASE.BOT / BUSTER.BOT Build Targets ---
+.PHONY: build moonbase.bot buster.bot test docker-build docker-up docker-down
+
+build: moonbase.bot
+
+moonbase.bot:
+	python scripts/build_moonbase_bot.py
+
+buster.bot: moonbase.bot
+
+test:
+	python -m unittest test_moonbase_bot.py
+
+docker-build:
+	docker build -f Dockerfile.moonbase -t moonbase-bot:latest .
+
+docker-up:
+	docker compose -f docker-compose.minecraft.yml up -d
+
+docker-down:
+	docker compose -f docker-compose.minecraft.yml down
+
