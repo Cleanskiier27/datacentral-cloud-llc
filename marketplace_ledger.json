@@ -4,15 +4,15 @@
   },
   "purchases": [
     {
-      "delivery_status": "Delivery queued (RCON error: Failed to connect to RCON server 127.0.0.1:25575: [WinError 10061] No connection could be made because the target machine actively refused it)",
+      "tx_id": "tx_1789030636_Test",
+      "player": "TestPioneer",
       "item_id": "rations_crate",
       "item_name": "Hydroponic Rations Crate",
-      "player": "TestPioneer",
       "quantity": 1,
-      "remaining_balance": 60,
-      "timestamp": 1789030143.1331847,
       "tokens_spent": 40,
-      "tx_id": "tx_1789030143_Test"
+      "remaining_balance": 60,
+      "delivery_status": "Delivery queued (RCON error: Failed to connect to RCON server 127.0.0.1:25575: [WinError 10061] No connection could be made because the target machine actively refused it)",
+      "timestamp": 1789030636.7015738
     }
   ]
 }
