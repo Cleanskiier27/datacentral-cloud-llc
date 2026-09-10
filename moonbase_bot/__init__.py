@@ -7,3 +7,4 @@ Integrated with NetworkBuster Avatar, Token Economy, and Moonbase Alpha saga lor
 __version__ = "1.0.0"
 __bot_name__ = "MOONBASE.BOT"
 __bot_alias__ = "BUSTER.BOT"
+
