@@ -1,4 +1,0 @@
-requests
-urllib3
-# Optional (progress bar):
-tqdm
