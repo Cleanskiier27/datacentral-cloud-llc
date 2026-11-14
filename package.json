@@ -1,0 +1,28 @@
+{
+  "name": "datacentral-cloud-llc",
+  "version": "1.0.0",
+  "description": "DataCentral Cloud LLC - Cloud Infrastructure and Data Management Platform",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm install && npm run config",
+    "config": "node scripts/config.js",
+    "dev": "echo 'Development mode - configure backend and frontend'",
+    "build": "echo 'Building project'",
+    "test": "echo 'Running tests'",
+    "lint": "echo 'Linting code'",
+    "format": "echo 'Formatting code'"
+  },
+  "keywords": [
+    "cloud",
+    "data",
+    "infrastructure",
+    "gcp",
+    "vertexai",
+    "ai"
+  ],
+  "author": "Cleanskiier27",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
